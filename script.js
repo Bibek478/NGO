@@ -38,4 +38,31 @@ document.addEventListener('DOMContentLoaded', function() {
             alert('Thank you for your interest in donating. This feature is coming soon!');
         });
     }
+
+    const heroSwiper = new Swiper('.hero-swiper', {
+        direction: 'horizontal',
+        loop: true,
+        effect: 'fade',
+        fadeEffect: {
+            crossFade: true
+        },
+        autoplay: {
+            delay: 2000,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true,
+        },
+        pagination: {
+            el: '.swiper-pagination',
+            clickable: true,
+        },
+        navigation: {
+            nextEl: '.swiper-button-next',
+            prevEl: '.swiper-button-prev',
+        },
+        keyboard: {
+            enabled: true,
+            onlyInViewport: false,
+        },
+        speed: 1000,
+    });
 });

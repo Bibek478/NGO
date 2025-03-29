@@ -61,6 +61,12 @@ nav ul li a:hover {
     color: #4CAF50;
 }
 
+/* Style for the active navigation link */
+nav ul li a.active {
+    color: #4CAF50; /* Use the primary color */
+    font-weight: bold; /* Make it stand out */
+}
+
 .donate-btn {
     background-color: #FF5722;
     color: #fff;
@@ -73,6 +79,12 @@ nav ul li a:hover {
 
 .donate-btn:hover {
     background-color: #E64A19;
+}
+
+/* Style for the container of the header buttons */
+.header-cta-buttons {
+    display: flex; /* Arrange buttons horizontally */
+    gap: 0.5rem; /* Add space between buttons */
 }
 
 .hamburger {
@@ -100,6 +112,7 @@ nav ul li a:hover {
     background-size: cover;
     background-position: center;
     height: 100vh;
+    margin-top: 60px; /* Add margin to account for fixed header */
     display: flex;
     align-items: center;
     text-align: center;
@@ -130,6 +143,109 @@ nav ul li a:hover {
 .hero p {
     font-size: 1.2rem;
     margin-bottom: 2rem;
+}
+
+.hero-swiper {
+    width: 100%;
+    height: 100%; /* Swiper container takes full height */
+}
+
+.swiper-slide {
+    text-align: center;
+    font-size: 18px;
+    background: transparent; /* Slides are transparent, hero background/overlay shows */
+
+    /* Center slide content */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden; /* Prevent content overflow if needed */
+    position: relative;
+}
+
+.swiper-slide::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.swiper-slide img {
+    display: block;
+    max-width: 100%;
+    /* Let's use contain to ensure the whole image is visible */
+    max-height: 85vh; /* Limit height relative to viewport */
+    object-fit: contain;
+    margin: auto; /* Center image */
+}
+
+/* Style Swiper navigation buttons */
+.hero-swiper .swiper-button-prev,
+.hero-swiper .swiper-button-next {
+    color: #ffffff; /* White arrows */
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    --swiper-navigation-size: 30px; /* Adjust arrow size */
+}
+.hero-swiper .swiper-button-prev:hover,
+.hero-swiper .swiper-button-next:hover {
+    opacity: 1;
+}
+/* Position nav buttons slightly inside */
+.hero-swiper .swiper-button-prev {
+    left: 20px;
+}
+.hero-swiper .swiper-button-next {
+    right: 20px;
+}
+
+/* Style Swiper pagination bullets */
+.hero-swiper .swiper-pagination {
+    bottom: 20px !important; /* Position pagination lower */
+}
+.hero-swiper .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+    opacity: 1;
+    width: 10px;  /* Slightly larger bullets */
+    height: 10px;
+    transition: background-color 0.3s ease;
+}
+.hero-swiper .swiper-pagination-bullet-active {
+    background: #ffffff; /* Solid white for active */
+}
+
+.slide-content {
+    position: absolute;
+    color: white;
+    z-index: 10;
+    bottom: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    width: 80%;
+    max-width: 1200px;
+}
+
+.slide-content h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.slide-content p {
+    font-size: 1.2rem;
+    margin-bottom: 2rem;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .cta-buttons {
@@ -275,8 +391,26 @@ footer {
 
 /* Responsive styles */
 @media (max-width: 768px) {
+    header .container {
+        display: flex;
+        justify-content: space-between; /* Keep space between for hamburger and potentially donate button */
+        align-items: center;
+    }
+
+    .logo {
+        flex-grow: 1; /* Allow logo to take up remaining space */
+        text-align: center; /* Center the logo */
+    }
+
     .hamburger {
+        order: -1; /* Shift hamburger to the left */
         display: block;
+    }
+
+    /* If you have other elements in the header that need adjusting, you can use order or other flexbox properties */
+    /* For example, if you have a donate button that's getting pushed too far to the right: */
+    .header-cta-buttons {
+        margin-left: auto; /* Push buttons to the right */
     }
 
     nav {
@@ -302,9 +436,27 @@ footer {
         margin: 0;
     }
 
-    nav ul li a {
+    /* Base style for links within the mobile menu */
+    nav.active ul li a {
         display: block;
         padding: 0.5rem 1rem;
+        color: #333; /* Explicitly set base color */
+        font-weight: normal; /* Ensure base font weight */
+        background-color: transparent; /* Ensure base background */
+        transition: color 0.3s ease, background-color 0.3s ease; /* Restore transition */
+    }
+
+    /* Hover style for mobile menu links */
+    nav.active ul li a:hover {
+        color: #4CAF50;
+        background-color: #f0f0f0; /* Optional: Restore subtle background */
+    }
+
+    /* Active style for mobile menu links */
+    nav.active ul li a.active {
+        color: #4CAF50;
+        font-weight: bold;
+        background-color: #e8f5e9; /* Optional: Restore different background */
     }
 
     .donate-btn {
@@ -326,5 +478,31 @@ footer {
     .btn {
         width: 100%;
         margin-bottom: 1rem;
+    }
+}
+@media (max-width: 768px) {
+    .hero-swiper .swiper-button-prev,
+    .hero-swiper .swiper-button-next {
+        /* Optionally hide buttons on mobile */
+        /* display: none; */
+        --swiper-navigation-size: 25px; /* Smaller arrows */
+    }
+     .hero-swiper .swiper-button-prev {
+        left: 10px;
+    }
+    .hero-swiper .swiper-button-next {
+        right: 10px;
+    }
+    .hero-swiper .swiper-pagination {
+        bottom: 15px !important;
+    }
+     .hero-swiper .swiper-pagination-bullet {
+        width: 8px;
+        height: 8px;
+    }
+
+     /* Adjust image height on mobile if needed */
+     .swiper-slide img {
+        max-height: 80vh;
     }
 }
