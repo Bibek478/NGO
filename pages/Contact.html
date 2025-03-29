@@ -30,7 +30,7 @@
              line-height: 1.8;
          }
          .contact-info strong {
-            color: #4CAF50;
+            color: #6495ED;
          }
 
         .contact-form form {
@@ -57,7 +57,7 @@
              resize: vertical;
          }
         .contact-form button[type="submit"] {
-            background-color: #4CAF50;
+            background-color: #6495ED;
             color: #fff;
             border: none;
             padding: 0.75rem 1.5rem;
@@ -68,7 +68,7 @@
             align-self: flex-start;
         }
         .contact-form button[type="submit"]:hover {
-            background-color: #45a049;
+            background-color: #6495ED;
         }
 
         /* Simple map placeholder */
@@ -85,6 +85,10 @@
             font-style: italic;
         }
 
+        iframe{
+            width: 100%;
+            height: 300px;
+        }
     </style>
 </head>
 <body>
@@ -101,12 +105,16 @@
                     <li><a href="../index.html">Home</a></li> <!-- Adjusted path -->
                     <li><a href="About.html">About</a></li>
                     <li><a href="Projects.html">Projects</a></li>
-                    <li><a href="News.html">News & Application</a></li>
+                    <li><a href="News.html">News & Publication</a></li>
                     <!-- <li><a href="#volunteer">Volunteer</a></li> -->
                     <li><a href="Contact.html" class="active">Contact</a></li>
                 </ul>
             </nav>
-            <button class="donate-btn">Donate Now</button>
+            <!-- <button class="donate-btn">Donate Now</button> -->
+             <div class="header-cta-buttons">
+                <a href="join.html"><button class="donate-btn">Join us</button></a>
+                <a href="Donate.html"><button class="donate-btn">Donate Now</button></a>
+            </div>
         </div>
     </header>
 
@@ -129,21 +137,23 @@
                     <p><strong>Address:</strong><br>123 NGO Street, New Delhi, 110001, India</p>
                     <p><strong>Phone:</strong><br><a href="tel:+911234567890">+91 123 456 7890</a></p>
                     <p><strong>Email:</strong><br><a href="mailto:info@indianngo.org">info@indianngo.org</a></p>
-                    <p><strong>Office Hours:</strong><br>Monday - Friday: 9:00 AM - 5:00 PM IST</p>
+                    <!-- <p><strong>Office Hours:</strong><br>Monday - Friday: 9:00 AM - 5:00 PM IST</p> -->
 
                     <!-- Map Placeholder (replace with embedded map later) -->
                     <div class="map-placeholder">
                          <!-- You can embed Google Maps here using an iframe -->
-                         <p>(Embedded Map Will Go Here)</p>
+                             <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3567.8839887474583!2d88.36777657513437!3d26.588097773965956!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x39e45bec59fe3deb%3A0xcfc3fff1b5061479!2sPhansidewa%20High%20School%20Playground!5e0!3m2!1sen!2sin!4v1743271790618!5m2!1sen!2sin" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
                     </div>
                 </div>
 
                 <!-- Contact Form -->
                 <div class="contact-form" id="volunteer-form"> <!-- Added ID for linking -->
                     <h2>Send Us a Message</h2>
-                    <p>Use the form below to send us an email. We typically respond within 2 business days.</p>
-                    <form action="#" method="POST"> <!-- Replace # with your form processing endpoint -->
+                    <p>Use the form below to send us an email.</p>
+                    <form action="https://api.web3forms.com/submit" method="POST"> <!-- Replace # with your form processing endpoint -->
                         <div>
+                            <input type="hidden" name="access_key" value="5cfed649-fa22-4744-9b85-4f109f467d74">
+                            <input type="hidden" name="subject" value="Contact">
                             <label for="name">Your Name:</label>
                             <input type="text" id="name" name="name" required>
                         </div>
@@ -151,15 +161,15 @@
                             <label for="email">Your Email:</label>
                             <input type="email" id="email" name="email" required>
                         </div>
-                         <div>
+                         <!-- <div>
                             <label for="subject">Subject:</label>
                             <input type="text" id="subject" name="subject" required>
-                        </div>
+                        </div> -->
                         <div>
                             <label for="message">Your Message:</label>
                             <textarea id="message" name="message" required></textarea>
                         </div>
-                         <div>
+                         <!-- <div>
                             <label for="inquiry-type">Inquiry Type (Optional):</label>
                             <select id="inquiry-type" name="inquiry_type" style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; background-color: white;">
                                 <option value="">-- Select Type --</option>
@@ -169,7 +179,7 @@
                                 <option value="Partnership">Partnership Proposal</option>
                                 <option value="Feedback">Feedback</option>
                             </select>
-                        </div>
+                        </div> -->
                         <button type="submit" class="btn btn-primary">Send Message</button>
                     </form>
                 </div>

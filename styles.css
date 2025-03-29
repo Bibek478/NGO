@@ -38,7 +38,7 @@ header .container {
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
-    color: #4CAF50;
+    color: #6495ED;
     text-decoration: none;
 }
 
@@ -58,17 +58,17 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-    color: #4CAF50;
+    color: #6495ED;
 }
 
 /* Style for the active navigation link */
 nav ul li a.active {
-    color: #4CAF50; /* Use the primary color */
+    color: #6495ED; /* Use the primary color */
     font-weight: bold; /* Make it stand out */
 }
 
 .donate-btn {
-    background-color: #FF5722;
+    background-color: #6495ED;
     color: #fff;
     border: none;
     padding: 0.5rem 1rem;
@@ -78,7 +78,7 @@ nav ul li a.active {
 }
 
 .donate-btn:hover {
-    background-color: #E64A19;
+    background-color: #6495ED;
 }
 
 /* Style for the container of the header buttons */
@@ -263,12 +263,12 @@ nav ul li a.active {
 }
 
 .btn-primary {
-    background-color: #4CAF50;
+    background-color: #6495ED;
     color: #fff;
 }
 
 .btn-primary:hover {
-    background-color: #45a049;
+    background-color: #6495ED;
 }
 
 .btn-secondary {
@@ -291,7 +291,7 @@ nav ul li a.active {
 .mission h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #2E7D32;
+    color: #6495ED;
 }
 
 .mission p {
@@ -379,7 +379,7 @@ footer {
 }
 
 .footer-section ul li a:hover {
-    color: #4CAF50;
+    color: #6495ED;
 }
 
 .footer-bottom {
@@ -448,13 +448,13 @@ footer {
 
     /* Hover style for mobile menu links */
     nav.active ul li a:hover {
-        color: #4CAF50;
+        color: #6495ED;
         background-color: #f0f0f0; /* Optional: Restore subtle background */
     }
 
     /* Active style for mobile menu links */
     nav.active ul li a.active {
-        color: #4CAF50;
+        color: #6495ED;
         font-weight: bold;
         background-color: #e8f5e9; /* Optional: Restore different background */
     }

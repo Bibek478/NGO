@@ -1,0 +1,326 @@
+<!-- pages/JoinUs.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Join Us - Get Involved with Indian NGO</title>
+    <link rel="stylesheet" href="../styles.css"> <!-- Adjusted path -->
+    <style>
+        /* Additional styles specific to Join Us page */
+        .join-us-section {
+            padding: 4rem 0;
+        }
+        .join-us-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .join-us-intro h2 {
+            text-align: center;
+            color: #6495ED;
+            margin-bottom: 1rem;
+        }
+        .join-us-intro p {
+            text-align: center;
+            margin-bottom: 2.5rem;
+            font-size: 1.1rem;
+            color: #555;
+            line-height: 1.7;
+        }
+
+        .join-us-form fieldset {
+            border: 1px solid #ddd;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+        }
+        .join-us-form legend {
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 0 0.5rem;
+            color: #333;
+        }
+
+        .form-grid {
+             display: grid;
+             grid-template-columns: 1fr; /* Default to single column */
+             gap: 1rem 1.5rem; /* Row gap, Column gap */
+        }
+         /* Two columns for larger screens */
+        @media (min-width: 768px) {
+            .form-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+            /* Make certain fields span both columns if needed */
+            .form-grid .full-width {
+                 grid-column: 1 / -1; /* Span full width */
+            }
+        }
+
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem; /* Space between label and input */
+        }
+
+        .join-us-form label {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+            display: block;
+            font-size: 0.95rem;
+            color: #444;
+        }
+        .join-us-form input[type="text"],
+        .join-us-form input[type="email"],
+        .join-us-form input[type="tel"],
+        .join-us-form select,
+        .join-us-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+            font-family: inherit; /* Ensure consistent font */
+        }
+         .join-us-form textarea {
+             min-height: 120px;
+             resize: vertical;
+         }
+         .join-us-form select {
+             appearance: none; /* For custom arrow later if desired */
+             background-color: #fff;
+         }
+
+        /* Styling for checkboxes/radios */
+        .checkbox-group label, .radio-group label {
+            font-weight: normal; /* Normal weight for options */
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+        .checkbox-group input[type="checkbox"],
+        .radio-group input[type="radio"] {
+            width: auto; /* Don't force full width */
+            accent-color: #6495ED; /* Color the check/dot */
+             cursor: pointer;
+        }
+
+        .form-submit {
+            text-align: center;
+            margin-top: 1.5rem;
+        }
+        .form-submit .btn-primary {
+             padding: 0.8rem 2rem;
+             font-size: 1.1rem;
+        }
+
+        .form-note {
+             text-align: center;
+             margin-top: 2rem;
+             font-size: 0.9rem;
+             color: #777;
+         }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../index.html" class="logo">NGO Logo</a> <!-- Adjusted path -->
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li> <!-- Adjusted path -->
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="Projects.html">Projects</a></li>
+                    <li><a href="News.html">News & Publication</a></li>
+                    <!-- Consider adding Join Us link here if it wasn't before -->
+                    <!-- <li><a href="JoinUs.html" class="active">Join Us</a></li> -->
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-cta-buttons">
+                <!-- Update this button to link to this page -->
+                <a href="join.html" class="donate-btn">Join us</a>
+                <a href="Donate.html" class="donate-btn">Donate Now</a> <!-- Link to Donate page -->
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Title Section -->
+        <section class="page-title" style="background-color: #E8F5E9; padding: 6rem 0 2rem 0; text-align: center; margin-top: 60px;"> <!-- Added margin-top for fixed header -->
+            <div class="container">
+                <h1>Become Part of the Change</h1>
+                <p>Join our team of passionate individuals working towards a better future.</p>
+            </div>
+        </section>
+
+        <!-- Join Us Form Section -->
+        <section class="join-us-section">
+            <div class="container join-us-container">
+
+                <div class="join-us-intro">
+                    <h2>Volunteer Application</h2>
+                    <p>Thank you for your interest in volunteering with us! Your time and skills are invaluable. Please fill out the form below, and we'll get in touch with you regarding available opportunities that match your interests and availability.</p>
+                </div>
+
+                <!-- NOTE: This form needs a backend script to process the submissions -->
+                <form class="join-us-form" action="https://api.web3forms.com/submit" method="POST"> <!-- Replace # with your form processing endpoint -->
+
+                    <fieldset>
+                        <legend>Personal Information</legend>
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <input type="hidden" name="access_key" value="5cfed649-fa22-4744-9b85-4f109f467d74">
+                                <input type="hidden" name="subject" value="Volunteer Application - Website Form">
+                                <label for="first-name">First Name:</label>
+                                <input type="text" id="first-name" name="first_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="last-name">Last Name:</label>
+                                <input type="text" id="last-name" name="last_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address:</label>
+                                <input type="email" id="email" name="email" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="phone">Phone Number:</label>
+                                <input type="tel" id="phone" name="phone" required>
+                            </div>
+                             <div class="form-group full-width"> <!-- Spans full width on larger screens -->
+                                <label for="address">Address (City, State):</label>
+                                <input type="text" id="address" name="address" placeholder="e.g., New Delhi, Delhi">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- <fieldset>
+                        <legend>Areas of Interest</legend>
+                         <p style="font-size: 0.9em; color: #666; margin-bottom: 1rem;">Select the areas where you'd be most interested in contributing (check all that apply):</p>
+                        <div class="form-grid checkbox-group">
+                            <label><input type="checkbox" name="interest[]" value="education"> Education Programs</label>
+                            <label><input type="checkbox" name="interest[]" value="environment"> Environmental Projects (Planting, Cleanups)</label>
+                            <label><input type="checkbox" name="interest[]" value="skill_dev"> Skill Development Workshops</label>
+                            <label><input type="checkbox" name="interest[]" value="healthcare"> Healthcare Camps</label>
+                            <label><input type="checkbox" name="interest[]" value="fundraising"> Fundraising & Events</label>
+                            <label><input type="checkbox" name="interest[]" value="admin"> Administrative Support</label>
+                            <label><input type="checkbox" name="interest[]" value="awareness"> Awareness Campaigns</label>
+                            <label><input type="checkbox" name="interest[]" value="other"> Other (Specify Below)</label>
+                        </div>
+                        <div class="form-group full-width" style="margin-top: 1rem;">
+                             <label for="interest-other-details">If 'Other', please specify:</label>
+                             <input type="text" id="interest-other-details" name="interest_other_details">
+                        </div>
+                    </fieldset> -->
+
+                     <!-- <fieldset>
+                        <legend>Availability</legend>
+                         <p style="font-size: 0.9em; color: #666; margin-bottom: 1rem;">How much time can you commit?</p>
+                         <div class="form-grid">
+                             <div class="form-group">
+                                 <label for="availability-type">Commitment Type:</label>
+                                 <select id="availability-type" name="availability_type">
+                                     <option value="">-- Select --</option>
+                                     <option value="regular">Regular (e.g., weekly/monthly)</option>
+                                     <option value="event_based">Event-Based</option>
+                                     <option value="flexible">Flexible / As Needed</option>
+                                     <option value="project_specific">Project Specific</option>
+                                 </select>
+                             </div>
+                             <div class="form-group">
+                                 <label for="hours-per-week">Approx. Hours per Week/Month (if applicable):</label>
+                                 <input type="text" id="hours-per-week" name="hours_per_week" placeholder="e.g., 4 hours/week">
+                             </div>
+                         </div>
+                          <div class="form-group full-width" style="margin-top: 1rem;">
+                            <label for="availability-details">Specific Days/Times Available (Optional):</label>
+                            <input type="text" id="availability-details" name="availability_details" placeholder="e.g., Weekends, Tuesday afternoons">
+                        </div>
+                    </fieldset> -->
+
+                     <!-- <fieldset>
+                        <legend>Skills & Motivation</legend>
+                         <div class="form-grid">
+                             <div class="form-group full-width">
+                                <label for="skills">Relevant Skills or Experience (Optional):</label>
+                                <textarea id="skills" name="skills" placeholder="E.g., Teaching, Content Writing, Event Management, Graphic Design, Medical Background..."></textarea>
+                            </div>
+                             <div class="form-group full-width">
+                                <label for="motivation">Why do you want to volunteer with us?</label>
+                                <textarea id="motivation" name="motivation" required placeholder="Tell us a bit about your motivation to join our cause."></textarea>
+                            </div>
+                              <div class="form-group full-width">
+                                 <label for="resume">Upload Resume/CV (Optional, PDF/DOC/DOCX, max 5MB):</label>
+                                 <input type="file" id="resume" name="resume" accept=".pdf,.doc,.docx" style="padding: 0.5rem; border: 1px solid #ccc;">
+                             </div>
+                         </div>
+                    </fieldset> -->
+
+                    <!-- Submit Button -->
+                    <div class="form-submit">
+                        <button type="submit" class="btn btn-primary">Submit Application</button>
+                    </div>
+
+                     <p class="form-note">
+                         We review applications regularly and will contact you soon. Thank you for your willingness to help!
+                     </p>
+                </form>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li> <!-- Adjusted path -->
+                        <li><a href="About.html">About</a></li>
+                        <li><a href="Projects.html">Projects</a></li>
+                        <li><a href="News.html">News</a></li>
+                        <!-- Add other relevant links if needed -->
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Get Involved</h3>
+                    <ul>
+                         <li><a href="join.html">Volunteer (Join Us)</a></li>
+                        <li><a href="Donate.html">Donate</a></li>
+                        <li><a href="Contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>123 NGO Street, New Delhi, India</p>
+                    <p>Phone: +91 123 456 7890</p>
+                    <p>Email: info@indianngo.org</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 Indian NGO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script> <!-- Adjusted path -->
+</body>
+</html>

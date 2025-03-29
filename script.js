@@ -32,12 +32,12 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Donation button click event
-    const donateBtn = document.querySelector('.donate-btn');
-    if (donateBtn) {
-        donateBtn.addEventListener('click', function() {
-            alert('Thank you for your interest in donating. This feature is coming soon!');
-        });
-    }
+    // const donateBtn = document.querySelector('.donate-btn');
+    // if (donateBtn) {
+    //     donateBtn.addEventListener('click', function() {
+    //         alert('Thank you for your interest in donating. This feature is coming soon!');
+    //     });
+    // }
 
     const heroSwiper = new Swiper('.hero-swiper', {
         direction: 'horizontal',
