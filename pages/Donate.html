@@ -1,0 +1,347 @@
+<!-- pages/Donate.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donate - Support Indian NGO</title>
+    <link rel="stylesheet" href="../styles.css"> <!-- Adjusted path -->
+    <style>
+        /* Additional styles specific to Donate page */
+        .donate-section {
+            padding: 4rem 0;
+        }
+        .donate-container {
+            max-width: 800px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .donate-intro h2 {
+            text-align: center;
+            color: #4CAF50;
+            margin-bottom: 1rem;
+        }
+        .donate-intro p {
+            text-align: center;
+            margin-bottom: 2rem;
+            font-size: 1.1rem;
+            color: #555;
+        }
+
+        .donation-form fieldset {
+            border: 1px solid #ddd;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border-radius: 5px;
+        }
+        .donation-form legend {
+            font-weight: bold;
+            font-size: 1.2rem;
+            padding: 0 0.5rem;
+            color: #333;
+        }
+
+        .amount-options, .frequency-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            justify-content: center; /* Center buttons */
+        }
+
+        .amount-options .btn, .frequency-options label {
+            background-color: #f0f0f0;
+            border: 2px solid transparent;
+            color: #333;
+            padding: 0.75rem 1.5rem;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        /* Style for selected options (can be enhanced with JS) */
+        .amount-options input[type="radio"]:checked + .btn,
+        .frequency-options input[type="radio"]:checked + label {
+             background-color: #E8F5E9; /* Light green */
+             border-color: #4CAF50; /* Green border */
+             color: #2E7D32; /* Darker green text */
+        }
+
+        /* Hide actual radio buttons */
+        .amount-options input[type="radio"],
+        .frequency-options input[type="radio"] {
+            display: none;
+        }
+
+        .custom-amount {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            margin-top: 1rem;
+             justify-content: center; /* Center custom amount input */
+        }
+        .custom-amount label {
+            font-weight: bold;
+        }
+        .custom-amount input[type="number"] {
+            padding: 0.5rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            max-width: 120px; /* Limit width */
+             font-size: 1rem;
+        }
+         /* Hide spinner arrows for number input */
+        .custom-amount input[type="number"]::-webkit-outer-spin-button,
+        .custom-amount input[type="number"]::-webkit-inner-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+        }
+        .custom-amount input[type="number"] {
+            -moz-appearance: textfield; /* Firefox */
+        }
+
+
+        .donate-submit {
+            text-align: center;
+            margin-top: 2rem;
+        }
+        .donate-submit .btn-primary {
+             padding: 1rem 2.5rem;
+             font-size: 1.2rem;
+        }
+
+        .impact-section {
+            background-color: #E8F5E9;
+            padding: 3rem 0;
+            margin-top: 3rem;
+            text-align: center;
+        }
+        .impact-section h3 {
+            color: #2E7D32;
+            margin-bottom: 1.5rem;
+        }
+        .impact-item {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+         .impact-item strong {
+             color: #4CAF50;
+         }
+
+        .other-ways {
+             margin-top: 3rem;
+             padding-top: 2rem;
+             border-top: 1px solid #eee;
+             text-align: center;
+        }
+         .other-ways h3 {
+              margin-bottom: 1rem;
+              color: #555;
+         }
+         .other-ways p {
+              margin-bottom: 0.5rem;
+              color: #666;
+         }
+         .other-ways strong {
+              color: #333;
+         }
+
+         .security-note {
+             text-align: center;
+             margin-top: 2rem;
+             font-size: 0.9rem;
+             color: #777;
+         }
+          .security-note img { /* Optional: Add a lock icon */
+              vertical-align: middle;
+              height: 16px;
+              margin-right: 5px;
+          }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../index.html" class="logo">NGO Logo</a> <!-- Adjusted path -->
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li> <!-- Adjusted path -->
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="Projects.html">Projects</a></li>
+                    <li><a href="News.html">News & Application</a></li>
+                    <li><a href="Donate.html">Donate</a></li> <!-- Current Page -->
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <!-- Keep Donate button or link it directly here -->
+             <a href="Donate.html" class="donate-btn">Donate Now</a>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Title Section -->
+        <section class="page-title" style="background-color: #f4f4f4; padding: 6rem 0 2rem 0; text-align: center; margin-top: 60px;"> <!-- Added margin-top for fixed header -->
+            <div class="container">
+                <h1>Support Our Cause</h1>
+                <p>Your contribution makes a real difference.</p>
+            </div>
+        </section>
+
+        <!-- Donation Form Section -->
+        <section class="donate-section">
+            <div class="container donate-container">
+
+                <div class="donate-intro">
+                    <h2>Make a Donation</h2>
+                    <p>Your generous donation fuels our mission to empower communities and protect our environment. Choose an amount and frequency below, or enter a custom amount.</p>
+                </div>
+
+                <!-- NOTE: This form structure is for display. Actual payment processing requires integration with a payment gateway (Razorpay, Stripe, PayPal, etc.) -->
+                <form class="donation-form" action="[YOUR_PAYMENT_GATEWAY_ENDPOINT]" method="POST">
+
+                    <fieldset>
+                        <legend>Choose Donation Amount (INR)</legend>
+                        <div class="amount-options">
+                            <input type="radio" id="amount500" name="donation_amount" value="500" checked>
+                            <label for="amount500" class="btn">₹500</label>
+
+                            <input type="radio" id="amount1000" name="donation_amount" value="1000">
+                            <label for="amount1000" class="btn">₹1000</label>
+
+                            <input type="radio" id="amount2500" name="donation_amount" value="2500">
+                            <label for="amount2500" class="btn">₹2500</label>
+
+                            <input type="radio" id="amount5000" name="donation_amount" value="5000">
+                            <label for="amount5000" class="btn">₹5000</label>
+                        </div>
+                        <div class="custom-amount">
+                             <input type="radio" id="amount_custom_radio" name="donation_amount" value="custom"> <!-- Hidden radio for custom selection logic -->
+                            <label for="custom_amount_input">Other Amount: ₹</label>
+                            <input type="number" id="custom_amount_input" name="custom_donation_amount" placeholder="Enter amount" min="100" step="100" onfocus="document.getElementById('amount_custom_radio').checked = true;">
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Select Frequency</legend>
+                        <div class="frequency-options">
+                            <input type="radio" id="freq_onetime" name="donation_frequency" value="one-time" checked>
+                            <label for="freq_onetime">One-Time</label>
+
+                            <input type="radio" id="freq_monthly" name="donation_frequency" value="monthly">
+                            <label for="freq_monthly">Monthly</label>
+                        </div>
+                         <p style="font-size: 0.9em; text-align: center; color: #666;">Monthly donations provide sustainable support for our ongoing projects.</p>
+                    </fieldset>
+
+                    <!-- Placeholder for Payment Gateway Button/Integration -->
+                    <div class="donate-submit">
+                        <!-- This button would typically trigger the payment gateway process -->
+                        <button type="submit" class="btn btn-primary">Proceed to Secure Donation</button>
+                    </div>
+
+                     <p class="security-note">
+                         <!-- Example lock icon (replace with actual image or icon font) -->
+                         <img src="https://via.placeholder.com/16x16?text=🔒" alt="Lock icon">
+                         All transactions are processed securely.
+                     </p>
+                </form>
+
+                 <!-- Other Ways to Donate -->
+                 <div class="other-ways">
+                     <h3>Other Ways to Donate</h3>
+                     <p>Prefer to donate via bank transfer or cheque?</p>
+                     <p><strong>Bank Transfer (NEFT/IMPS):</strong><br>
+                        Account Name: [Your NGO Account Name]<br>
+                        Account Number: [Your Account Number]<br>
+                        Bank Name: [Your Bank Name]<br>
+                        IFSC Code: [Your IFSC Code]<br>
+                        Branch: [Your Branch Address]
+                     </p>
+                     <p style="margin-top: 1rem;"><strong>Cheque Donations:</strong><br>
+                        Please make cheques payable to "[Your NGO Name]" and mail to:<br>
+                        123 NGO Street, New Delhi, 110001, India
+                    </p>
+                    <p style="margin-top: 1rem;">For donation receipts or queries, please contact us at <a href="mailto:donations@indianngo.org">donations@indianngo.org</a>.</p>
+                 </div>
+
+            </div>
+        </section>
+
+        <!-- Impact Section -->
+        <section class="impact-section">
+            <div class="container">
+                <h3>Your Donation's Impact</h3>
+                <div class="impact-item"><strong>₹500</strong> can provide essential school supplies for 2 children for a semester.</div>
+                <div class="impact-item"><strong>₹1000</strong> can help plant 10 native trees in our reforestation drive.</div>
+                <div class="impact-item"><strong>₹2500</strong> can support one woman's participation in a skill development workshop.</div>
+                <div class="impact-item"><strong>₹5000</strong> can contribute significantly to installing a clean water filter in a community.</div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li> <!-- Adjusted path -->
+                        <li><a href="About.html">About</a></li>
+                        <li><a href="Projects.html">Projects</a></li>
+                        <li><a href="Donate.html">Donate</a></li>
+                        <!-- Add other relevant links if needed -->
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Get Involved</h3>
+                    <ul>
+                         <li><a href="Contact.html#volunteer-form">Volunteer</a></li>
+                        <li><a href="Donate.html">Donate</a></li>
+                        <li><a href="Contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>123 NGO Street, New Delhi, India</p>
+                    <p>Phone: +91 123 456 7890</p>
+                    <p>Email: info@indianngo.org</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 Indian NGO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script> <!-- Adjusted path -->
+    <script>
+        // Optional: Simple JS to clear custom amount if a preset is clicked
+        document.querySelectorAll('.amount-options input[type="radio"]').forEach(radio => {
+            radio.addEventListener('change', function() {
+                if (this.value !== 'custom') {
+                    document.getElementById('custom_amount_input').value = '';
+                }
+            });
+        });
+         // Ensure the hidden custom radio is selected when the input gets focus
+         // (already handled by onfocus attribute in HTML, but this is another way)
+        // document.getElementById('custom_amount_input').addEventListener('focus', function() {
+        //     document.getElementById('amount_custom_radio').checked = true;
+        // });
+    </script>
+</body>
+</html>

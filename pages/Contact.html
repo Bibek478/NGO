@@ -1,0 +1,218 @@
+<!-- pages/Contact.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Indian NGO</title>
+    <link rel="stylesheet" href="../styles.css"> <!-- Adjusted path -->
+    <style>
+        /* Additional styles specific to Contact page */
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            padding: 4rem 0;
+        }
+        @media (min-width: 992px) {
+            .contact-container {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .contact-info h2, .contact-form h2 {
+            margin-bottom: 1.5rem;
+            color: #333;
+        }
+         .contact-info p {
+             margin-bottom: 1rem;
+             line-height: 1.8;
+         }
+         .contact-info strong {
+            color: #4CAF50;
+         }
+
+        .contact-form form {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+        .contact-form label {
+            font-weight: bold;
+            margin-bottom: 0.25rem;
+            display: block;
+        }
+        .contact-form input[type="text"],
+        .contact-form input[type="email"],
+        .contact-form textarea {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 1rem;
+        }
+         .contact-form textarea {
+             min-height: 150px;
+             resize: vertical;
+         }
+        .contact-form button[type="submit"] {
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            border-radius: 5px;
+            align-self: flex-start;
+        }
+        .contact-form button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        /* Simple map placeholder */
+        .map-placeholder {
+            background-color: #e0e0e0;
+            height: 300px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #666;
+            margin-top: 2rem;
+            font-style: italic;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <a href="../index.html" class="logo">NGO Logo</a> <!-- Adjusted path -->
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li> <!-- Adjusted path -->
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="Projects.html">Projects</a></li>
+                    <li><a href="News.html">News & Application</a></li>
+                    <!-- <li><a href="#volunteer">Volunteer</a></li> -->
+                    <li><a href="Contact.html">Contact</a></li> <!-- Current page -->
+                </ul>
+            </nav>
+            <button class="donate-btn">Donate Now</button>
+        </div>
+    </header>
+
+    <main>
+        <!-- Page Title Section -->
+        <section class="page-title" style="background-color: #f4f4f4; padding: 6rem 0 2rem 0; text-align: center; margin-top: 60px;"> <!-- Added margin-top for fixed header -->
+            <div class="container">
+                <h1>Get In Touch</h1>
+                <p>We'd love to hear from you! Reach out with questions, feedback, or partnership inquiries.</p>
+            </div>
+        </section>
+
+        <!-- Contact Content Section -->
+        <section class="contact-section">
+            <div class="container contact-container">
+
+                <!-- Contact Information -->
+                <div class="contact-info">
+                    <h2>Contact Information</h2>
+                    <p><strong>Address:</strong><br>123 NGO Street, New Delhi, 110001, India</p>
+                    <p><strong>Phone:</strong><br><a href="tel:+911234567890">+91 123 456 7890</a></p>
+                    <p><strong>Email:</strong><br><a href="mailto:info@indianngo.org">info@indianngo.org</a></p>
+                    <p><strong>Office Hours:</strong><br>Monday - Friday: 9:00 AM - 5:00 PM IST</p>
+
+                    <!-- Map Placeholder (replace with embedded map later) -->
+                    <div class="map-placeholder">
+                         <!-- You can embed Google Maps here using an iframe -->
+                         <p>(Embedded Map Will Go Here)</p>
+                    </div>
+                </div>
+
+                <!-- Contact Form -->
+                <div class="contact-form" id="volunteer-form"> <!-- Added ID for linking -->
+                    <h2>Send Us a Message</h2>
+                    <p>Use the form below to send us an email. We typically respond within 2 business days.</p>
+                    <form action="#" method="POST"> <!-- Replace # with your form processing endpoint -->
+                        <div>
+                            <label for="name">Your Name:</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div>
+                            <label for="email">Your Email:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                         <div>
+                            <label for="subject">Subject:</label>
+                            <input type="text" id="subject" name="subject" required>
+                        </div>
+                        <div>
+                            <label for="message">Your Message:</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                         <div>
+                            <label for="inquiry-type">Inquiry Type (Optional):</label>
+                            <select id="inquiry-type" name="inquiry_type" style="width: 100%; padding: 0.75rem; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; background-color: white;">
+                                <option value="">-- Select Type --</option>
+                                <option value="General Inquiry">General Inquiry</option>
+                                <option value="Donation Question">Donation Question</option>
+                                <option value="Volunteer Inquiry">Volunteer Inquiry</option>
+                                <option value="Partnership">Partnership Proposal</option>
+                                <option value="Feedback">Feedback</option>
+                            </select>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send Message</button>
+                    </form>
+                </div>
+
+            </div>
+        </section>
+
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li> <!-- Adjusted path -->
+                        <li><a href="About.html">About</a></li>
+                        <li><a href="Projects.html">Projects</a></li>
+                         <li><a href="News.html">News</a></li>
+                        <!-- Add other relevant links if needed -->
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="#volunteer-form">Volunteer</a></li> <!-- Link to form on this page -->
+                        <li><a href="#">Donate</a></li>
+                        <li><a href="Contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>123 NGO Street, New Delhi, India</p>
+                    <p>Phone: +91 123 456 7890</p>
+                    <p>Email: info@indianngo.org</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2023 Indian NGO. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script> <!-- Adjusted path -->
+</body>
+</html>
