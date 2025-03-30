@@ -35,6 +35,13 @@ header .container {
     padding: 1rem 0;
 }
 
+.name{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #6495ED;
+}
+
 .logo {
     font-size: 1.5rem;
     font-weight: bold;
@@ -318,46 +325,144 @@ nav ul li a.active {
 /* Featured projects section styles */
 .featured-projects {
     padding: 4rem 0;
+    overflow: hidden;
+    position: relative;
 }
 
-.featured-projects h2 {
-    font-size: 2rem;
-    margin-bottom: 2rem;
-    text-align: center;
+.projects-header {
+    /* Removed justify-content and align-items as only h2 remains */
+    margin-bottom: 1.5rem; /* Adjusted margin */
+    text-align: center; /* Center title if desired */
+}
+
+.projects-header h2 {
+    margin-bottom: 0; /* Remove default margin if needed */
 }
 
 .project-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    display: flex;
     gap: 2rem;
+    overflow-x: scroll;
+    padding: 1rem 0;
+    margin-bottom: 1.5rem;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    cursor: grab;
+}
+
+.project-grid:active {
+    cursor: grabbing;
 }
 
 .project-card {
+    min-width: 300px; /* Changed from flex-basis to min-width */
+    width: 300px; /* Added fixed width */
+    scroll-snap-align: start;
+    flex-shrink: 0; /* Prevent cards from shrinking */
     background-color: #fff;
-    border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-radius: 8px; /* Slightly more rounded */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
     overflow: hidden;
+    display: flex; /* Use flex for card content */
+    flex-direction: column; /* Stack content vertically */
 }
 
 .project-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
+    display: block; /* Remove potential extra space below image */
 }
 
 .project-card h3 {
-    font-size: 1.5rem;
-    margin: 1rem;
+    font-size: 1.3rem; /* Adjusted size */
+    margin: 1rem 1rem 0.5rem; /* Adjust margins */
+    color: #333;
 }
 
 .project-card p {
     margin: 0 1rem 1rem;
+    font-size: 0.95rem;
+    color: #555;
+    flex-grow: 1; /* Allow paragraph to take up space */
+    line-height: 1.5;
 }
 
 .project-card .btn {
-    display: block;
-    margin: 1rem;
+    display: block; /* Keeps button on its own line */
+    margin: 0 1rem 1rem; /* Align margin with text */
     text-align: center;
+    padding: 0.6rem 1rem; /* Adjust padding */
+    background-color: #6495ED; /* Example primary color */
+    color: white;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+.project-card .btn:hover {
+    background-color: #5a86db; /* Darker shade on hover */
+}
+
+/* Hide scrollbar but keep functionality */
+.project-grid::-webkit-scrollbar {
+    height: 0;
+    width: 0;
+    background: transparent;
+}
+
+.project-grid {
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+}
+
+/* --- Simplified Slider Indicator Styles --- */
+.slider-indicator-container {
+    width: 60%;
+    height: 4px;
+    background-color: #e0e0e0;
+    border-radius: 2px;
+    margin: 2rem auto 0;
+}
+
+.slider-indicator-bar {
+    height: 100%;
+    width: 0;
+    background-color: #6495ED;
+    border-radius: 2px;
+    transition: width 0.1s ease;
+}
+
+@media (max-width: 768px) {
+    .slider-indicator-container {
+        width: 80%;
+    }
+}
+
+/* --- Responsive Adjustments --- */
+@media (max-width: 768px) {
+    .project-card {
+        min-width: 85vw;
+        width: 85vw;
+        max-width: 300px;
+    }
+
+    .project-grid {
+        gap: 1rem; /* Reduce gap on smaller screens */
+        /* Add padding to the sides of the grid container if needed */
+        padding-left: 1rem;
+        padding-right: 1rem;
+        /* Ensure snap points work well with padding */
+        scroll-padding-inline: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .project-card {
+        flex: 0 0 90vw; /* Even wider on very small screens */
+    }
+     .projects-header h2 {
+        font-size: 1.8rem; /* Adjust heading size */
+     }
 }
 
 /* Footer styles */
