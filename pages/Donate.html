@@ -2,323 +2,429 @@
 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Donate - Support Indian NGO</title>
-    <link rel="stylesheet" href="../styles.css"> <!-- Adjusted path -->
+    <link rel="stylesheet" href="../styles.css" />
+    <!-- Adjusted path -->
     <style>
-        /* Additional styles specific to the revised Donate page */
-        .donate-section {
-            padding: 4rem 0;
-        }
-        .donate-container {
-            max-width: 900px; /* Slightly wider for two sections */
-            margin: 0 auto;
-            background-color: #fdfdfd; /* Slightly off-white background */
-            padding: 1.5rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
-        }
+      .full {
+        /* Initially hidden via inline style 'display: none;' */
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid #eee;
+        animation: fadeIn 0.5s ease-in-out; /* Simple fade-in for when it appears */
+      }
+      .full p {
+        margin-bottom: 1rem;
+        line-height: 1.7;
+        color: #333;
+      }
+      /* Additional styles specific to the revised Donate page */
+      .donate-section {
+        padding: 4rem 0;
+      }
+      .donate-container {
+        max-width: 900px; /* Slightly wider for two sections */
+        margin: 0 auto;
+        background-color: #fdfdfd; /* Slightly off-white background */
+        padding: 1.5rem;
+        border-radius: 8px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+      }
 
-        .donate-intro h2 {
-            text-align: center;
-            color: #6495ED;
-            margin-bottom: 1rem;
-        }
-        .donate-intro p {
-            text-align: center;
-            margin-bottom: 2.5rem;
-            font-size: 1.1rem;
-            color: #555;
-            line-height: 1.7;
-        }
+      .donate-intro h2 {
+        text-align: center;
+        color: #6495ed;
+        margin-bottom: 1rem;
+      }
+      .donate-intro p {
+        text-align: center;
+        margin-bottom: 2.5rem;
+        font-size: 1.1rem;
+        color: #555;
+        line-height: 1.7;
+      }
 
+      .donation-methods-grid {
+        display: grid;
+        grid-template-columns: 1fr; /* Single column by default */
+        gap: 2.5rem; /* Space between India/Global sections */
+      }
+
+      /* Two columns for larger screens */
+      @media (min-width: 768px) {
         .donation-methods-grid {
-            display: grid;
-            grid-template-columns: 1fr; /* Single column by default */
-            gap: 2.5rem; /* Space between India/Global sections */
+          grid-template-columns: 1fr 1fr;
         }
+      }
 
-        /* Two columns for larger screens */
-        @media (min-width: 768px) {
-            .donation-methods-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
+      .donation-method {
+        background-color: #fff;
+        padding: 1.5rem;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        box-shadow: 0 1px 4px rgba(0, 0, 0, 0.05);
+      }
 
-        .donation-method {
-            background-color: #fff;
-            padding: 1.5rem;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-        }
+      .donation-method h3 {
+        color: #6495ed; /* Darker green heading */
+        margin-bottom: 1.5rem;
+        text-align: center;
+        border-bottom: 1px solid #eee;
+        padding-bottom: 0.75rem;
+      }
 
-        .donation-method h3 {
-            color: #6495ED; /* Darker green heading */
-            margin-bottom: 1.5rem;
-            text-align: center;
-            border-bottom: 1px solid #eee;
-            padding-bottom: 0.75rem;
-        }
+      .bank-details p {
+        margin-bottom: 0.8rem;
+        line-height: 1.6;
+        font-size: 0.95rem;
+        color: #333;
+      }
+      .bank-details strong {
+        color: #1a1a1a; /* Darker text for labels */
+        display: inline-block;
+        min-width: 120px; /* Align labels */
+      }
 
-        .bank-details p {
-            margin-bottom: 0.8rem;
-            line-height: 1.6;
-            font-size: 0.95rem;
-            color: #333;
-        }
-        .bank-details strong {
-            color: #1a1a1a; /* Darker text for labels */
-            display: inline-block;
-            min-width: 120px; /* Align labels */
-        }
+      .qr-code-placeholder {
+        background-color: #f0f0f0;
+        border: 1px dashed #ccc;
+        height: 150px;
+        width: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #777;
+        font-size: 0.9rem;
+        margin: 1.5rem auto 1rem auto; /* Center the QR code */
+        border-radius: 4px;
+      }
 
-        .qr-code-placeholder {
-             background-color: #f0f0f0;
-             border: 1px dashed #ccc;
-             height: 150px;
-             width: 150px;
-             display: flex;
-             align-items: center;
-             justify-content: center;
-             text-align: center;
-             color: #777;
-             font-size: 0.9rem;
-             margin: 1.5rem auto 1rem auto; /* Center the QR code */
-             border-radius: 4px;
-        }
+      .donation-note {
+        font-size: 0.9rem;
+        color: #666;
+        margin-top: 1.5rem;
+        padding-top: 1rem;
+        border-top: 1px solid #eee;
+        line-height: 1.5;
+      }
+      .donation-note strong {
+        color: #6495ed;
+      }
+      .donation-note a {
+        color: #6495ed;
+        text-decoration: underline;
+      }
 
-        .donation-note {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 1.5rem;
-            padding-top: 1rem;
-            border-top: 1px solid #eee;
-            line-height: 1.5;
-        }
-         .donation-note strong {
-             color: #6495ED;
-         }
-         .donation-note a {
-             color: #6495ED;
-             text-decoration: underline;
-         }
+      /* Impact Section styling remains largely the same */
+      .impact-section {
+        background-color: #e8f5e9;
+        padding: 3rem 0;
+        margin-top: 3rem;
+        text-align: center;
+      }
+      .impact-section h3 {
+        color: #6495ed;
+        margin-bottom: 1.5rem;
+      }
+      .impact-item {
+        margin-bottom: 1rem;
+        font-size: 1.1rem;
+      }
+      .impact-item strong {
+        color: #6495ed;
+      }
 
-
-        /* Impact Section styling remains largely the same */
-        .impact-section {
-            background-color: #E8F5E9;
-            padding: 3rem 0;
-            margin-top: 3rem;
-            text-align: center;
-        }
-        .impact-section h3 {
-            color: #6495ED;
-            margin-bottom: 1.5rem;
-        }
-        .impact-item {
-            margin-bottom: 1rem;
-            font-size: 1.1rem;
-        }
-         .impact-item strong {
-             color: #6495ED;
-         }
-
-         /* Tax Info Section */
-        .tax-info-section {
-            padding: 2rem 0 1rem 0; /* Reduced padding */
-            text-align: center;
-            background-color: #f9f9f9;
-            border-top: 1px solid #eee;
-            border-bottom: 1px solid #eee;
-        }
-         .tax-info-section h3 {
-            color: #555;
-            margin-bottom: 1rem;
-         }
-         .tax-info-section p {
-             max-width: 700px;
-             margin: 0 auto 0.75rem auto;
-             color: #666;
-             font-size: 0.95rem;
-             line-height: 1.6;
-         }
-         .tax-info-section strong {
-            color: #333;
-         }
-
+      /* Tax Info Section */
+      .tax-info-section {
+        padding: 2rem 0 1rem 0; /* Reduced padding */
+        text-align: center;
+        background-color: #f9f9f9;
+        border-top: 1px solid #eee;
+        border-bottom: 1px solid #eee;
+      }
+      .tax-info-section h3 {
+        color: #555;
+        margin-bottom: 1rem;
+      }
+      .tax-info-section p {
+        max-width: 700px;
+        margin: 0 auto 0.75rem auto;
+        color: #666;
+        font-size: 0.95rem;
+        line-height: 1.6;
+      }
+      .tax-info-section strong {
+        color: #333;
+      }
     </style>
-</head>
-<body>
+  </head>
+  <body>
     <header>
-        <div class="container">
-            <a href="../index.html" class="logo">NGO Logo</a> <!-- Adjusted path -->
-            <button class="hamburger" aria-label="Toggle menu">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-            <nav>
-                <ul>
-                    <li><a href="../index.html">Home</a></li> <!-- Adjusted path -->
-                    <li><a href="About.html">About</a></li>
-                    <li><a href="Projects.html">Projects</a></li>
-                    <li><a href="News.html">News & Publication</a></li>
-                    <!-- <li><a href="Donate.html" class="active">Donate</a></li> 
+      <div class="container">
+        <a href="../index.html" class="logo">NGO Logo</a>
+        <!-- Adjusted path -->
+        <button class="hamburger" aria-label="Toggle menu">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+        <nav>
+          <ul>
+            <li><a href="../index.html">Home</a></li>
+            <!-- Adjusted path -->
+            <li><a href="About.html">About</a></li>
+            <li><a href="Projects.html">Projects</a></li>
+            <li><a href="News.html">News & Publication</a></li>
+            <!-- <li><a href="Donate.html" class="active">Donate</a></li> 
                     <li><a href="JoinUs.html">Join Us</a></li>-->
-                    <li><a href="Contact.html">Contact</a></li>
-                </ul>
-            </nav>
+            <li><a href="Contact.html">Contact</a></li>
+          </ul>
+        </nav>
 
-            <div class="header-cta-buttons">
-                <a href="join.html" class="donate-btn">Join us</a>
-                <a href="Donate.html" class="donate-btn">Donate Now</a>
-            </div>
+        <div class="header-cta-buttons">
+          <a href="join.html" class="donate-btn">Join us</a>
+          <a href="Donate.html" class="donate-btn">Donate Now</a>
         </div>
+      </div>
     </header>
 
     <main>
-        <!-- Page Title Section -->
-        <section class="page-title" style="background-color: #f4f4f4; padding: 6rem 0 2rem 0; text-align: center; margin-top: 60px;">
-            <div class="container">
-                <h1>Support Our Mission</h1>
-                <p>Your contribution empowers us to create lasting change.</p>
-            </div>
-        </section>
+      <!-- Page Title Section -->
+      <section
+        class="page-title"
+        style="
+          background-color: #f4f4f4;
+          padding: 6rem 0 2rem 0;
+          text-align: center;
+          margin-top: 60px;
+        "
+      >
+        <div class="container">
+          <h1>Support Our Mission</h1>
+          <p>Your contribution empowers us to create lasting change.</p>
+        </div>
+      </section>
 
-        <!-- Donation Details Section -->
-        <section class="donate-section">
-            <div class="container donate-container">
+      <!-- Donation Details Section -->
+      <section class="donate-section">
+        <div class="container donate-container">
+          <div class="donate-intro">
+            <h2>Ways to Donate</h2>
+            <p>
+              You can support our work through direct bank transfers. Please
+              find the relevant details below based on your location. Every
+              contribution, big or small, makes a significant impact.
+            </p>
+          </div>
 
-                <div class="donate-intro">
-                    <h2>Ways to Donate</h2>
-                    <p>You can support our work through direct bank transfers. Please find the relevant details below based on your location. Every contribution, big or small, makes a significant impact.</p>
-                </div>
+          <div class="donation-methods-grid">
+            <!-- Donation Method 1: India (INR) -->
+            <div class="donation-method">
+              <h3>Donate within India (INR)</h3>
+              <div class="news-content">
+                <button class="btn toggle-article">Read More</button>
+                <div class="full" style="display: none">
+                  <div class="bank-details">
+                    <!--Placeholder for UPI QR Code -->
 
-                <div class="donation-methods-grid">
-
-                    <!-- Donation Method 1: India (INR) -->
-                    <div class="donation-method">
-                        <h3>Donate within India (INR)</h3>
-
-                        <div class="bank-details">
-                            <p><strong>Account Name:</strong> [Your NGO Name as per Bank]</p>
-                            <p><strong>Account Number:</strong> [Your Indian Account Number]</p>
-                            <p><strong>Account Type:</strong> Savings / Current</p> <!-- Specify correct type -->
-                            <p><strong>Bank Name:</strong> [Your Bank Name]</p>
-                            <p><strong>IFSC Code:</strong> [Your IFSC Code]</p>
-                            <p><strong>Branch:</strong> [Your Branch Name/Address]</p>
-                        </div>
-
-                        <!-- Placeholder for UPI QR Code -->
-                        <div class="qr-code-placeholder">
-                            Scan UPI QR Code<br>(Replace this box with your actual QR image)
-                        </div>
-
-                        <p class="donation-note">
-                            <strong>Important:</strong> After donating, please email us at <a href="mailto:donations@indianngo.org?subject=INR%20Donation%20Details">donations@indianngo.org</a> with your Name, PAN (for 80G receipt), Amount, and Transaction ID/Date to help us issue your receipt promptly.
-                        </p>
+                    <div class="qr-code-placeholder">
+                      Scan UPI QR Code<br />(Replace this box with your actual
+                      QR image)
                     </div>
+                    <p>
+                      <strong>Account Name:</strong>PHANSIDEWA SOCIAL &
+                      RURAL WELFARE SOCIETY
+                    </p>
+                    <p>
+                      <strong>Account Number:</strong> [Your Indian Account
+                      Number]
+                    </p>
+                    <p><strong>Account Type:</strong> Savings / Current</p>
+                    <!--Specify correct type -->
+                    <p><strong>Bank Name:</strong> [Your Bank Name]</p>
+                    <p><strong>IFSC Code:</strong> [Your IFSC Code]</p>
+                    <p><strong>Branch:</strong> [Your Branch Name/Address]</p>
+                  </div>
+                </div>
+              </div>
 
-                    <!-- Donation Method 2: International (USD, EUR, etc.) -->
-                    <div class="donation-method">
-                        <h3>International Donations (USD, EUR, etc.)</h3>
-                         <p style="text-align: center; font-size: 0.9em; color: #666; margin-bottom: 1.5rem;">For donations from outside India (requires FCRA approval - ensure you have it!).</p>
+              <p class="donation-note">
+                <strong>Important:</strong> After donating, please email us at
+                <a
+                  href="mailto:donations@indianngo.org?subject=INR%20Donation%20Details"
+                  >donations@indianngo.org</a
+                >
+                with your Name, PAN (for 80G receipt), Amount, and Transaction
+                ID/Date to help us issue your receipt promptly.
+              </p>
+            </div>
 
-                        <div class="bank-details">
-                            <p><strong>Beneficiary Name:</strong> [Your NGO Name as per Bank]</p>
-                            <p><strong>Beneficiary A/C No:</strong> [Your FCRA Account Number]</p>
-                             <p><strong>Account Type:</strong> Savings / Current</p> <!-- Specify correct type -->
-                            <p><strong>Beneficiary Bank:</strong> [Your Bank Name]</p>
-                            <p><strong>SWIFT/BIC Code:</strong> [Your Bank's SWIFT Code]</p>
-                            <p><strong>Bank Address:</strong> [Full Address of Your Bank Branch]</p>
-                            <p><strong>Purpose / Ref:</strong> Donation / [Your specific purpose code if any]</p>
-                             <!-- Add Intermediary Bank details if required by your bank -->
-                             <!-- <p><strong>Intermediary Bank:</strong> [Name and SWIFT]</p> -->
-                        </div>
+            <!-- Donation Method 2: International (USD, EUR, etc.) -->
+            <div class="donation-method">
+              <h3>International Donations (USD, EUR, etc.)</h3>
+              <p
+                style="
+                  text-align: center;
+                  font-size: 0.9em;
+                  color: #666;
+                  margin-bottom: 1.5rem;
+                "
+              >
+                For donations from outside India (requires FCRA approval -
+                ensure you have it!).
+              </p>
+              <div class="news-content">
+                <button class="btn toggle-article">Read More</button>
+                <div class="full" style="display: none">
+              <div class="bank-details">
+              <p><strong>Beneficiary Name:</strong>PHANSIDEWA SOCIAL &
+                RURAL WELFARE SOCIETY</p>
+              <p><strong>Beneficiary A/C No:</strong> [Your FCRA Account Number]</p>
+              <p><strong>Account Type:</strong> Savings / Current</p> Specify correct type
+              <p><strong>Beneficiary Bank:</strong> [Your Bank Name]</p>
+              <p><strong>SWIFT/BIC Code:</strong> [Your Bank's SWIFT Code]</p>
+              <p><strong>Bank Address:</strong> [Full Address of Your Bank Branch]</p>
+              <p><strong>Purpose / Ref:</strong> Donation / [Your specific purpose code if any]</p>
+              Add Intermediary Bank details if required by your bank
+              <p><strong>Intermediary Bank:</strong> [Name and SWIFT]</p>
+              </div>
 
-                         <!-- Placeholder for International QR/Payment Link (Less common for direct bank transfers) -->
-                        <!-- <div class="qr-code-placeholder">
+              <!-- Placeholder for International QR/Payment Link (Less common for direct bank transfers) -->
+              <!-- <div class="qr-code-placeholder">
                              Optional: Link/QR for International Payment Gateway (e.g., PayPal)
                         </div> -->
-
-
-                        <p class="donation-note">
-                           <strong>Important:</strong> International wire transfers may incur fees from intermediary banks. Please instruct your bank accordingly. Kindly email your transaction details (Name, Country, Amount, Transaction ID/Date) to <a href="mailto:donations@indianngo.org?subject=International%20Donation%20Details">donations@indianngo.org</a> for our records and acknowledgement.
-                        </p>
-                    </div>
-
-                </div> <!-- End of donation-methods-grid -->
-
-            </div> <!-- End of donate-container -->
-        </section>
-
-         <!-- Tax Exemption Information -->
-        <section class="tax-info-section">
-            <div class="container">
-                <h3>Tax Exemption Information</h3>
-                 <p>
-                    Donations made within India are eligible for tax exemption under <strong>Section 80G</strong> of the Income Tax Act, 1961. Our Registration No. is [Your 80G Reg No]. Our PAN is [Your NGO PAN Number].
-                </p>
-                 <p>
-                     Please ensure you provide your PAN number when informing us about your donation to receive the 80G certificate.
-                 </p>
-                 <!-- Add info about international tax deductibility if applicable -->
-                 <!-- <p>For donors in the [Country, e.g., USA], we are registered as [Details, e.g., a 501(c)(3) public charity]...</p> -->
+                </div>
+              </div>
+              <p class="donation-note">
+                <strong>Important:</strong> International wire transfers may
+                incur fees from intermediary banks. Please instruct your bank
+                accordingly. Kindly email your transaction details (Name,
+                Country, Amount, Transaction ID/Date) to
+                <a
+                  href="mailto:donations@indianngo.org?subject=International%20Donation%20Details"
+                  >donations@indianngo.org</a
+                >
+                for our records and acknowledgement.
+              </p>
             </div>
-        </section>
+          </div>
+          <!-- End of donation-methods-grid -->
+        </div>
+        <!-- End of donate-container -->
+      </section>
 
+      <!-- Tax Exemption Information -->
+      <section class="tax-info-section">
+        <div class="container">
+          <h3>Tax Exemption Information</h3>
+          <p>
+            Donations made within India are eligible for tax exemption under
+            <strong>Section 80G</strong> of the Income Tax Act, 1961. Our
+            Registration No. is [Your 80G Reg No]. Our PAN is [Your NGO PAN
+            Number].
+          </p>
+          <p>
+            Please ensure you provide your PAN number when informing us about
+            your donation to receive the 80G certificate.
+          </p>
+          <!-- Add info about international tax deductibility if applicable -->
+          <!-- <p>For donors in the [Country, e.g., USA], we are registered as [Details, e.g., a 501(c)(3) public charity]...</p> -->
+        </div>
+      </section>
 
-        <!-- Impact Section (Kept from previous version) -->
-        <section class="impact-section">
-            <div class="container">
-                <h3>Your Donation's Impact</h3>
-                <div class="impact-item"><strong>₹500</strong> can provide essential school supplies for 2 children for a semester.</div>
-                <div class="impact-item"><strong>₹1000</strong> can help plant 10 native trees in our reforestation drive.</div>
-                <div class="impact-item"><strong>₹2500</strong> can support one woman's participation in a skill development workshop.</div>
-                <div class="impact-item"><strong>₹5000</strong> can contribute significantly to installing a clean water filter in a community.</div>
-                 <p style="margin-top: 2rem; font-size: 1rem; color: #333;">We are committed to transparency and using your contribution effectively.</p>
-            </div>
-        </section>
-
+      <!-- Impact Section (Kept from previous version) -->
+      <section class="impact-section">
+        <div class="container">
+          <h3>Your Donation's Impact</h3>
+          <div class="impact-item">
+            <strong>₹500</strong> can provide essential school supplies for 2
+            children for a semester.
+          </div>
+          <div class="impact-item">
+            <strong>₹1000</strong> can help plant 10 native trees in our
+            reforestation drive.
+          </div>
+          <div class="impact-item">
+            <strong>₹2500</strong> can support one woman's participation in a
+            skill development workshop.
+          </div>
+          <div class="impact-item">
+            <strong>₹5000</strong> can contribute significantly to installing a
+            clean water filter in a community.
+          </div>
+          <p style="margin-top: 2rem; font-size: 1rem; color: #333">
+            We are committed to transparency and using your contribution
+            effectively.
+          </p>
+        </div>
+      </section>
     </main>
 
     <footer>
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Quick Links</h3>
-                    <ul>
-                        <li><a href="../index.html">Home</a></li>
-                        <li><a href="About.html">About</a></li>
-                        <li><a href="Projects.html">Projects</a></li>
-                        <li><a href="News.html">News</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Get Involved</h3>
-                    <ul>
-                         <li><a href="JoinUs.html">Join us</a></li>
-                        <li><a href="Donate.html">Donate</a></li>
-                        <li><a href="Contact.html">Contact Us</a></li>
-                    </ul>
-                </div>
-                <div class="footer-section">
-                    <h3>Contact</h3>
-                    <p>123 NGO Street, New Delhi, India</p>
-                    <p>Phone: +91 123 456 7890</p>
-                    <p>Email: info@indianngo.org</p>
-                </div>
-            </div>
-            <div class="footer-bottom">
-                <p>© 2023 Indian NGO. All rights reserved.</p>
-            </div>
+      <div class="container">
+        <div class="footer-content">
+          <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+              <li><a href="../index.html">Home</a></li>
+              <li><a href="About.html">About</a></li>
+              <li><a href="Projects.html">Projects</a></li>
+              <li><a href="News.html">News</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Get Involved</h3>
+            <ul>
+              <li><a href="JoinUs.html">Join us</a></li>
+              <li><a href="Donate.html">Donate</a></li>
+              <li><a href="Contact.html">Contact Us</a></li>
+            </ul>
+          </div>
+          <div class="footer-section">
+            <h3>Contact</h3>
+            <p>Phansidewa, Darjeeling, West Bengal, India</p>
+            <p>Phone: +91 0000000000</p>
+            <p>Email: mr.prosenjit1985@rediffmail.com</p>
+          </div>
         </div>
+        <div class="footer-bottom">
+          <p>© 2023 Indian NGO. All rights reserved.</p>
+        </div>
+      </div>
     </footer>
 
-    <script src="../script.js"></script> <!-- Adjusted path -->
+    <script src="../script.js"></script>
+    <!-- Adjusted path -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.querySelectorAll(".toggle-article").forEach((button) => {
+          button.addEventListener("click", function () {
+            const content =
+              this.closest(".news-content").querySelector(".full");
+            if (content) {
+              const isHidden =
+                content.style.display === "none" ||
+                content.style.display === "";
+              content.style.display = isHidden ? "block" : "none";
+              this.textContent = isHidden ? "Read Less" : "Read More";
+              // Optional: Scroll smoothly to the content when opening
+              if (isHidden) {
+                setTimeout(() => {
+                  content.scrollIntoView({
+                    behavior: "smooth",
+                    block: "nearest",
+                  });
+                }, 100);
+              }
+            }
+          });
+        });
+      });
+    </script>
     <!-- Removed the JS related to the old donation form -->
-</body>
+  </body>
 </html>
