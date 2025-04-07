@@ -15,7 +15,8 @@ body {
     width: 90%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 20px;
+    /* Container padding removed here, applied to specific header elements */
+    /* padding: 0 20px; */
 }
 
 /* Header styles */
@@ -32,30 +33,60 @@ header .container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    /* --- MODIFICATION 1: Define a fixed height for the header content area --- */
+    height: 75px;      /* <<< ADJUST THIS: Set desired navbar height */
+    padding: 0;        /* Remove padding here, apply to children if needed */
+    position: relative; /* Needed for potential absolute positioning context */
 }
 
-.name{
+/* --- MODIFICATION 2: Style the logo link container --- */
+.logo {
+    position: relative; /* Crucial: Context for the absolute positioned image */
+    display: inline-block; /* Or flex, if needed */
+    padding: 0 20px;    /* Add padding to match original container padding */
+    z-index: 1001;      /* Ensure logo link area is interactive */
+    /* Remove text styles if logo is purely image */
+    text-decoration: none;
+}
+
+/* --- MODIFICATION 3: Style the logo image itself --- */
+.logo img {
+    position: absolute;   /* Take image out of flow */
+    height: 120px;        /* <<< ADJUST THIS: Set VISUAL height of logo */
+    width: auto;          /* Maintain aspect ratio */
+    top: 50%;             /* Position top edge at vertical center of a.logo */
+    left: 20px;           /* Position relative to container padding */
+    transform: translateY(-50%); /* Shift image up by half its own height */
+                                 /* This centers it vertically */
+    z-index: 1000;        /* Sit below the link's interactive area if needed */
+}
+
+/* --- MODIFICATION 4: Adjust Nav and Buttons to account for logo space --- */
+nav {
+    /* Add margin-left to push nav away from the absolutely positioned logo */
+    /* Adjust this value based on your logo's final rendered width */
+    margin-left: 180px; /* <<< ADJUST THIS (approx logo width + padding) */
+    flex-grow: 1; /* Allow nav to take remaining space if needed */
+    /* Ensure nav vertically aligns if header height is explicit */
     display: flex;
     align-items: center;
     justify-content: center;
-    color: #6495ED;
-}
-
-.logo {
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #6495ED;
-    text-decoration: none;
 }
 
 nav ul {
     display: flex;
     list-style: none;
+    justify-content: flex-start; /* Align nav items */
+    padding: 0; /* Remove default padding */
+    margin: 0; /* Remove default margin */
 }
 
 nav ul li {
     margin-left: 1.5rem;
+}
+
+nav ul li:first-child {
+    margin-left: 0; /* Remove margin from first item if needed */
 }
 
 nav ul li a {
@@ -74,6 +105,16 @@ nav ul li a.active {
     font-weight: bold; /* Make it stand out */
 }
 
+/* Header CTA Buttons Container */
+.header-cta-buttons {
+    display: flex;
+    gap: 0.5rem;
+    /* Add padding to match original container padding */
+    padding-right: 20px;
+    /* Ensure buttons vertically align */
+    align-items: center;
+}
+
 .donate-btn {
     background-color: #6495ED;
     color: #fff;
@@ -84,25 +125,16 @@ nav ul li a.active {
     transition: background-color 0.3s ease;
     border-radius: 5px;
     text-decoration: none;
-    display: inline-block;
+    display: inline-block; /* Changed from original button */
 }
 
 .donate-btn:hover {
     background-color: #5a86db;
 }
 
-/* Style for the container of the header buttons */
-.header-cta-buttons {
-    display: flex; /* Arrange buttons horizontally */
-    gap: 0.5rem; /* Add space between buttons */
-}
-
 .header-cta-buttons a {
     text-decoration: none;
-}
-
-.header-cta-buttons .donate-btn {
-    display: inline-block;
+    line-height: 1; /* Prevent extra space from anchor tag */
 }
 
 .hamburger {
@@ -113,6 +145,10 @@ nav ul li a.active {
     padding: 0;
     width: 30px;
     height: 20px;
+    /* Ensure hamburger aligns */
+    order: -1; /* Keep it on the left on mobile if needed */
+    margin-right: 15px; /* Space between hamburger and logo on mobile */
+    margin-left: 20px; /* Space from edge */
 }
 
 .hamburger span {
@@ -126,61 +162,72 @@ nav ul li a.active {
 
 /* Hero section styles */
 .hero {
-    background-image: url('https://via.placeholder.com/1600x900');
+    /* background-image: url('https://via.placeholder.com/1600x900'); */ /* Use Swiper images */
     background-size: cover;
     background-position: center;
     height: 100vh;
-    margin-top: 60px; /* Add margin to account for fixed header */
+    /* --- ADJUST margin-top to match header height --- */
+    margin-top: 75px; /* <<< Ensure this matches header height */
     display: flex;
     align-items: center;
     text-align: center;
     color: #fff;
     position: relative;
+    overflow: hidden; /* Prevent content spill */
 }
 
-.hero::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-}
+/* Remove the hero::before overlay if Swiper slides have their own */
+/* .hero::before { */
+/*     content: ''; */
+/*     position: absolute; */
+/*     top: 0; */
+/*     left: 0; */
+/*     right: 0; */
+/*     bottom: 0; */
+/*     background-color: rgba(0, 0, 0, 0.5); */
+/* } */
 
 .hero .container {
     position: relative;
     z-index: 1;
-}
-
-.hero h1 {
-    font-size: 3rem;
-    margin-bottom: 1rem;
-}
-
-.hero p {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    padding: 0 20px; /* Add padding back inside hero container */
+    width: 100%; /* Ensure container spans width */
+    max-width: 1200px; /* Keep max width */
+    margin: 0 auto; /* Center */
 }
 
 .hero-swiper {
     width: 100%;
     height: 100%; /* Swiper container takes full height */
+    position: absolute; /* Position swiper absolutely within hero */
+    top: 0;
+    left: 0;
 }
 
 .swiper-slide {
     text-align: center;
     font-size: 18px;
-    background: transparent; /* Slides are transparent, hero background/overlay shows */
-
+    background: #fff; /* Fallback background */
     /* Center slide content */
     display: flex;
     justify-content: center;
     align-items: center;
     overflow: hidden; /* Prevent content overflow if needed */
-    position: relative;
+    position: relative; /* Needed for overlay and content */
 }
 
+/* Slide image - make it cover the slide area */
+.swiper-slide img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the slide area */
+    z-index: 1; /* Behind overlay and content */
+}
+
+/* Slide overlay */
 .swiper-slide::before {
     content: '';
     position: absolute;
@@ -188,70 +235,18 @@ nav ul li a.active {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.4);
-    z-index: 1;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 2; /* Above image, below content */
 }
 
-.swiper-slide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.swiper-slide img {
-    display: block;
-    max-width: 100%;
-    /* Let's use contain to ensure the whole image is visible */
-    max-height: 85vh; /* Limit height relative to viewport */
-    object-fit: contain;
-    margin: auto; /* Center image */
-}
-
-/* Style Swiper navigation buttons */
-.hero-swiper .swiper-button-prev,
-.hero-swiper .swiper-button-next {
-    color: #ffffff; /* White arrows */
-    opacity: 0.7;
-    transition: opacity 0.3s ease;
-    --swiper-navigation-size: 30px; /* Adjust arrow size */
-}
-.hero-swiper .swiper-button-prev:hover,
-.hero-swiper .swiper-button-next:hover {
-    opacity: 1;
-}
-/* Position nav buttons slightly inside */
-.hero-swiper .swiper-button-prev {
-    left: 20px;
-}
-.hero-swiper .swiper-button-next {
-    right: 20px;
-}
-
-/* Style Swiper pagination bullets */
-.hero-swiper .swiper-pagination {
-    bottom: 20px !important; /* Position pagination lower */
-}
-.hero-swiper .swiper-pagination-bullet {
-    background: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
-    opacity: 1;
-    width: 10px;  /* Slightly larger bullets */
-    height: 10px;
-    transition: background-color 0.3s ease;
-}
-.hero-swiper .swiper-pagination-bullet-active {
-    background: #ffffff; /* Solid white for active */
-}
-
+/* Slide content positioning */
 .slide-content {
-    position: absolute;
+    position: relative; /* Changed from absolute */
     color: white;
-    z-index: 10;
-    bottom: 20%;
-    left: 50%;
-    transform: translateX(-50%);
+    z-index: 3; /* Above overlay */
     text-align: center;
-    width: 80%;
-    max-width: 1200px;
+    padding: 20px; /* Add padding to content */
+    max-width: 90%; /* Limit content width */
 }
 
 .slide-content h1 {
@@ -270,6 +265,7 @@ nav ul li a.active {
     display: flex;
     justify-content: center;
     gap: 1rem;
+    flex-wrap: wrap; /* Allow buttons to wrap on small screens */
 }
 
 .btn {
@@ -286,7 +282,7 @@ nav ul li a.active {
 
 .btn-primary {
     background-color: #6495ED;
-    color: #fff !important;
+    color: #fff !important; /* Important may be needed due to specificity */
 }
 
 .btn-primary:hover {
@@ -295,7 +291,7 @@ nav ul li a.active {
 
 .btn-secondary {
     background-color: transparent;
-    color: #fff !important;
+    color: #fff !important; /* Important may be needed */
     border: 2px solid #fff;
 }
 
@@ -303,17 +299,59 @@ nav ul li a.active {
     background-color: rgba(255, 255, 255, 0.1);
 }
 
+/* Style Swiper navigation buttons */
+.hero-swiper .swiper-button-prev,
+.hero-swiper .swiper-button-next {
+    color: #ffffff; /* White arrows */
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+    --swiper-navigation-size: 30px; /* Adjust arrow size */
+    z-index: 10; /* Ensure buttons are clickable */
+}
+.hero-swiper .swiper-button-prev:hover,
+.hero-swiper .swiper-button-next:hover {
+    opacity: 1;
+}
+/* Position nav buttons slightly inside */
+.hero-swiper .swiper-button-prev {
+    left: 20px;
+}
+.hero-swiper .swiper-button-next {
+    right: 20px;
+}
+
+/* Style Swiper pagination bullets */
+.hero-swiper .swiper-pagination {
+    bottom: 20px !important; /* Position pagination lower */
+    z-index: 10; /* Ensure bullets are clickable */
+}
+.hero-swiper .swiper-pagination-bullet {
+    background: rgba(255, 255, 255, 0.5); /* Semi-transparent white */
+    opacity: 1;
+    width: 10px;  /* Slightly larger bullets */
+    height: 10px;
+    transition: background-color 0.3s ease;
+}
+.hero-swiper .swiper-pagination-bullet-active {
+    background: #ffffff; /* Solid white for active */
+}
+
+
 /* Mission section styles */
 .mission {
     background-color: #E8F5E9;
     padding: 4rem 0;
     text-align: center;
 }
+/* Re-add padding within the section's container */
+.mission .container {
+    padding: 0 20px;
+}
 
 .mission h2 {
     font-size: 2rem;
     margin-bottom: 1rem;
-    color: #6495ED;
+    color: #6495ED; /* Use consistent color */
 }
 
 .mission p {
@@ -325,29 +363,40 @@ nav ul li a.active {
 /* Featured projects section styles */
 .featured-projects {
     padding: 4rem 0;
-    overflow: hidden;
+    overflow: hidden; /* Keep horizontal overflow hidden */
     position: relative;
+}
+/* Re-add padding within the section's container */
+.featured-projects .container {
+    padding: 0 20px;
 }
 
 .projects-header {
-    /* Removed justify-content and align-items as only h2 remains */
-    margin-bottom: 1.5rem; /* Adjusted margin */
-    text-align: center; /* Center title if desired */
+    margin-bottom: 1.5rem;
+    text-align: center;
 }
 
 .projects-header h2 {
-    margin-bottom: 0; /* Remove default margin if needed */
+    margin-bottom: 0; /* Remove default margin */
+    font-size: 2rem; /* Match mission heading size */
 }
 
 .project-grid {
     display: flex;
-    gap: 2rem;
-    overflow-x: scroll;
-    padding: 1rem 0;
+    gap: 1.5rem; /* Consistent gap */
+    overflow-x: auto; /* Changed from scroll to auto */
+    /* padding: 1rem 0; */ /* Padding might interfere with scroll */
+    padding-bottom: 1rem; /* Add padding only at bottom */
     margin-bottom: 1.5rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     cursor: grab;
+    /* Add padding left/right to show edges */
+    padding-left: 20px;
+    padding-right: 20px;
+    /* Adjust margin to counter container padding if grid is full width */
+    margin-left: -20px;
+    margin-right: -20px;
 }
 
 .project-grid:active {
@@ -355,28 +404,28 @@ nav ul li a.active {
 }
 
 .project-card {
-    min-width: 300px; /* Changed from flex-basis to min-width */
-    width: 300px; /* Added fixed width */
+    min-width: 300px; /* Minimum width */
+    width: 300px;     /* Fixed width */
     scroll-snap-align: start;
     flex-shrink: 0; /* Prevent cards from shrinking */
     background-color: #fff;
-    border-radius: 8px; /* Slightly more rounded */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Enhanced shadow */
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     overflow: hidden;
-    display: flex; /* Use flex for card content */
-    flex-direction: column; /* Stack content vertically */
+    display: flex;
+    flex-direction: column;
 }
 
 .project-card img {
     width: 100%;
     height: 200px;
     object-fit: cover;
-    display: block; /* Remove potential extra space below image */
+    display: block;
 }
 
 .project-card h3 {
-    font-size: 1.3rem; /* Adjusted size */
-    margin: 1rem 1rem 0.5rem; /* Adjust margins */
+    font-size: 1.3rem;
+    margin: 1rem 1rem 0.5rem;
     color: #333;
 }
 
@@ -384,35 +433,45 @@ nav ul li a.active {
     margin: 0 1rem 1rem;
     font-size: 0.95rem;
     color: #555;
-    flex-grow: 1; /* Allow paragraph to take up space */
+    flex-grow: 1;
     line-height: 1.5;
 }
 
 .project-card .btn {
-    display: block; /* Keeps button on its own line */
-    margin: 0 1rem 1rem; /* Align margin with text */
+    display: block;
+    margin: 0 1rem 1rem;
     text-align: center;
-    padding: 0.6rem 1rem; /* Adjust padding */
-    background-color: #6495ED; /* Example primary color */
-    color: white;
+    padding: 0.6rem 1rem;
+    background-color: #6495ED;
+    color: white !important; /* Ensure text color */
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s ease;
+    border: none; /* Ensure no default button border */
 }
 .project-card .btn:hover {
-    background-color: #5a86db; /* Darker shade on hover */
+    background-color: #5a86db;
 }
 
 /* Hide scrollbar but keep functionality */
 .project-grid::-webkit-scrollbar {
-    height: 0;
-    width: 0;
-    background: transparent;
+    height: 8px; /* Make scrollbar visible but subtle */
+}
+.project-grid::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+.project-grid::-webkit-scrollbar-thumb {
+    background: #ccc;
+    border-radius: 4px;
+}
+.project-grid::-webkit-scrollbar-thumb:hover {
+    background: #aaa;
 }
 
 .project-grid {
-    scrollbar-width: none;
-    -ms-overflow-style: none;
+    scrollbar-width: thin; /* Firefox */
+    scrollbar-color: #ccc #f1f1f1; /* Firefox */
 }
 
 /* --- Simplified Slider Indicator Styles --- */
@@ -422,47 +481,15 @@ nav ul li a.active {
     background-color: #e0e0e0;
     border-radius: 2px;
     margin: 2rem auto 0;
+    overflow: hidden; /* Hide overflow of the inner bar */
 }
 
 .slider-indicator-bar {
     height: 100%;
-    width: 0;
+    width: 0; /* Initial width set by JS */
     background-color: #6495ED;
     border-radius: 2px;
-    transition: width 0.1s ease;
-}
-
-@media (max-width: 768px) {
-    .slider-indicator-container {
-        width: 80%;
-    }
-}
-
-/* --- Responsive Adjustments --- */
-@media (max-width: 768px) {
-    .project-card {
-        min-width: 85vw;
-        width: 85vw;
-        max-width: 300px;
-    }
-
-    .project-grid {
-        gap: 1rem; /* Reduce gap on smaller screens */
-        /* Add padding to the sides of the grid container if needed */
-        padding-left: 1rem;
-        padding-right: 1rem;
-        /* Ensure snap points work well with padding */
-        scroll-padding-inline: 1rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .project-card {
-        flex: 0 0 90vw; /* Even wider on very small screens */
-    }
-     .projects-header h2 {
-        font-size: 1.8rem; /* Adjust heading size */
-     }
+    /* Remove transition here, JS will handle updates */
 }
 
 /* Partners section styles */
@@ -470,22 +497,28 @@ nav ul li a.active {
     padding: 4rem 0;
     background-color: #f8f9fa;
 }
+/* Re-add padding within the section's container */
+.partners .container {
+    padding: 0 20px;
+}
 
 .partners h2 {
     text-align: center;
     color: #333;
     margin-bottom: 1rem;
+    font-size: 2rem;
 }
 
 .partners p {
     text-align: center;
     color: #666;
     margin-bottom: 3rem;
+    font-size: 1.1rem;
 }
 
 .partners-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); /* Adjust minmax */
     gap: 2rem;
     align-items: center;
     justify-items: center;
@@ -494,6 +527,9 @@ nav ul li a.active {
 .partner-logo {
     padding: 1rem;
     transition: transform 0.3s ease;
+    display: flex; /* Center image within logo area */
+    justify-content: center;
+    align-items: center;
 }
 
 .partner-logo:hover {
@@ -502,62 +538,75 @@ nav ul li a.active {
 
 .partner-logo img {
     max-width: 100%;
-    height: auto;
-    filter: grayscale(100%);
+    max-height: 80px; /* Limit partner logo height */
+    width: auto; /* Maintain aspect ratio */
+    height: auto; /* Maintain aspect ratio */
+    filter: grayscale(80%); /* Slightly less grayscale */
     transition: filter 0.3s ease;
+    opacity: 0.8; /* Slightly transparent */
 }
 
 .partner-logo:hover img {
     filter: grayscale(0%);
+    opacity: 1;
 }
 
 /* People section styles - Updated */
 .people {
     padding: 4rem 0;
 }
+/* Re-add padding within the section's container */
+.people .container {
+    padding: 0 20px;
+}
 
 .people h2 {
     text-align: center;
     color: #333;
     margin-bottom: 1rem;
+    font-size: 2rem;
 }
 
-.people > .container > p {
+.people > .container > p { /* Target paragraph directly inside container */
     text-align: center;
     color: #666;
     margin-bottom: 3rem;
+    font-size: 1.1rem;
 }
 
 .people-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsive columns */
     gap: 2rem;
-    max-width: 1200px;
-    margin: 0 auto;
+    max-width: 1200px; /* Align with container max-width */
+    margin: 0 auto; /* Center grid */
 }
 
 .person-card {
     background: #fff;
     border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08); /* Softer shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
     width: 100%;
     display: flex;
     align-items: center;
-    gap: 1rem;
-    padding: 0.8rem;
+    gap: 1.5rem; /* Increased gap */
+    padding: 1rem; /* Increased padding */
+    border: 1px solid #eee; /* Subtle border */
 }
 
 .person-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.12);
 }
 
 .person-card img {
-    width: 80px;
+    width: 80px; /* Keep size */
     height: 80px;
     border-radius: 50%;
     object-fit: cover;
-    border: 2px solid #6495ED;
+    border: 3px solid #6495ED; /* Thicker border */
+    flex-shrink: 0; /* Prevent image shrinking */
 }
 
 .person-card .person-info {
@@ -567,62 +616,14 @@ nav ul li a.active {
 .person-card h3 {
     color: #333;
     margin: 0 0 0.25rem;
-    font-size: 1.1rem;
+    font-size: 1.2rem; /* Slightly larger */
 }
 
 .person-card .role {
     color: #6495ED;
-    font-size: 0.9rem;
+    font-size: 0.95rem; /* Slightly larger */
     margin: 0;
-}
-
-/* Responsive adjustments for people section */
-@media (max-width: 768px) {
-    .people-grid {
-        grid-template-columns: 1fr;
-        padding: 0 1rem;
-    }
-
-    .person-card {
-        max-width: 100%;
-    }
-}
-
-@media (max-width: 480px) {
-    .person-card {
-        flex-direction: column;
-        text-align: center;
-        padding: 1rem;
-    }
-
-    .person-card img {
-        margin-bottom: 1rem;
-    }
-
-    .person-card .person-info {
-        text-align: center;
-    }
-}
-
-/* Responsive adjustments for partners and people sections */
-@media (max-width: 768px) {
-    .partners-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .people-grid {
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-    }
-
-    .person-card {
-        max-width: 250px;
-    }
-}
-
-@media (max-width: 480px) {
-    .partners-grid {
-        grid-template-columns: 1fr;
-    }
+    font-weight: bold;
 }
 
 /* Footer styles */
@@ -630,6 +631,10 @@ footer {
     background-color: #333;
     color: #fff;
     padding: 3rem 0 1rem;
+}
+/* Re-add padding within the section's container */
+footer .container {
+    padding: 0 20px;
 }
 
 .footer-content {
@@ -642,24 +647,32 @@ footer {
 .footer-section h3 {
     font-size: 1.2rem;
     margin-bottom: 1rem;
+    color: #6495ED; /* Add color */
 }
 
 .footer-section ul {
     list-style: none;
+    padding: 0; /* Remove default padding */
 }
 
 .footer-section ul li {
-    margin-bottom: 0.5rem;
+    margin-bottom: 0.75rem; /* Increase spacing */
 }
 
 .footer-section ul li a {
-    color: #fff;
+    color: #ccc; /* Lighter color for links */
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 .footer-section ul li a:hover {
-    color: #6495ED;
+    color: #fff; /* White on hover */
+}
+
+.footer-section p {
+    color: #ccc; /* Lighter color for text */
+    margin-bottom: 0.5rem;
+    line-height: 1.7;
 }
 
 .footer-bottom {
@@ -667,123 +680,182 @@ footer {
     margin-top: 2rem;
     padding-top: 1rem;
     border-top: 1px solid #555;
+    color: #aaa; /* Lighter color for copyright */
+    font-size: 0.9rem;
 }
 
-/* Consistent section title styles */
+/* Consistent section title styles for other pages */
 .page-title {
     background-color: #f4f4f4;
-    padding: 6rem 0 2rem 0;
+    padding: 4rem 0 2rem 0; /* Adjust padding */
     text-align: center;
-    margin-top: 60px;
+    margin-top: 75px; /* <<< Ensure this matches header height */
+    border-bottom: 1px solid #eee;
 }
 
 .page-title h1 {
     color: #333;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem; /* Reduced margin */
     font-size: 2.5rem;
 }
 
 .page-title p {
     color: #666;
     font-size: 1.1rem;
+    max-width: 700px;
+    margin: 0 auto; /* Center subtitle */
 }
 
-/* Responsive styles */
+
+/* --- Responsive Styles --- */
+
+/* Medium Screens (Tablets) */
+@media (max-width: 992px) {
+    nav {
+        margin-left: 150px; /* Adjust nav margin if logo width changes relatively */
+    }
+     .logo img {
+        height: 100px; /* Adjust logo visual height for tablets */
+     }
+     nav ul li {
+        margin-left: 1rem; /* Reduce nav spacing */
+     }
+     .header-cta-buttons {
+         gap: 0.3rem;
+     }
+     .donate-btn {
+         padding: 0.4rem 0.8rem;
+         font-size: 0.9rem;
+     }
+}
+
+/* Small Screens (Mobiles) */
 @media (max-width: 768px) {
     header .container {
-        display: flex;
-        justify-content: space-between; /* Keep space between for hamburger and potentially donate button */
-        align-items: center;
+        height: 65px; /* Adjust header height for mobile */
+        justify-content: space-between;
     }
 
     .logo {
-        flex-grow: 1; /* Allow logo to take up remaining space */
-        text-align: center; /* Center the logo */
+        /* Remove flex-grow on mobile, let hamburger/buttons define spacing */
+        text-align: left; /* Align logo left */
+        padding: 0; /* Remove padding, rely on image position */
+        position: static; /* Revert logo link positioning */
+    }
+
+    .logo img {
+        position: static; /* Revert image positioning */
+        transform: none; /* Remove transform */
+        height: 50px; /* <<< Set appropriate logo height for mobile header */
+        vertical-align: middle; /* Re-align vertically */
+        margin-left: 15px; /* Space from hamburger */
     }
 
     .hamburger {
-        order: -1; /* Shift hamburger to the left */
-        display: block;
-    }
-
-    /* If you have other elements in the header that need adjusting, you can use order or other flexbox properties */
-    /* For example, if you have a donate button that's getting pushed too far to the right: */
-    .header-cta-buttons {
-        margin-left: auto; /* Push buttons to the right */
+        display: block; /* Show hamburger */
+        order: -1; /* Keep hamburger on left */
+        margin-left: 15px; /* Space from edge */
+        margin-right: 0;
     }
 
     nav {
+        /* Mobile menu positioning */
         position: absolute;
-        top: 100%;
+        top: 100%; /* Position below header */
         left: 0;
         width: 100%;
         background-color: #fff;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        display: none;
+        display: none; /* Hidden by default */
+        margin-left: 0; /* Reset margin */
+        z-index: 999; /* Below header but above content */
     }
 
     nav.active {
-        display: block;
+        display: block; /* Show when active */
     }
 
     nav ul {
-        flex-direction: column;
+        flex-direction: column; /* Stack links vertically */
         padding: 1rem 0;
+        width: 100%;
     }
 
     nav ul li {
-        margin: 0;
+        margin: 0; /* Remove horizontal margins */
+        width: 100%;
+        text-align: center; /* Center nav links */
+        border-bottom: 1px solid #f0f0f0;
+    }
+    nav ul li:last-child {
+        border-bottom: none;
     }
 
     /* Base style for links within the mobile menu */
     nav.active ul li a {
         display: block;
-        padding: 0.5rem 1rem;
-        color: #333; /* Explicitly set base color */
-        font-weight: normal; /* Ensure base font weight */
-        background-color: transparent; /* Ensure base background */
-        transition: color 0.3s ease, background-color 0.3s ease; /* Restore transition */
+        padding: 1rem; /* More touch-friendly padding */
+        color: #333;
+        font-weight: normal;
+        background-color: transparent;
+        transition: color 0.3s ease, background-color 0.3s ease;
     }
 
     /* Hover style for mobile menu links */
     nav.active ul li a:hover {
         color: #6495ED;
-        background-color: #f0f0f0; /* Optional: Restore subtle background */
+        background-color: #f8f8f8;
     }
 
     /* Active style for mobile menu links */
     nav.active ul li a.active {
         color: #6495ED;
         font-weight: bold;
-        background-color: #e8f5e9; /* Optional: Restore different background */
+        background-color: #e8f5e9;
     }
 
+    .header-cta-buttons {
+        margin-left: auto; /* Push buttons to the right */
+        padding-right: 15px; /* Adjust right padding */
+        gap: 0.5rem; /* Restore gap */
+    }
     .donate-btn {
-        margin-left: 1rem;
+         /* Keep button size reasonable */
+        padding: 0.4rem 0.8rem;
+        font-size: 0.9rem;
     }
 
-    .hero h1 {
+    /* Adjust hero and other sections' margin-top */
+    .hero, .page-title {
+        margin-top: 65px; /* Match mobile header height */
+    }
+
+    .hero h1, .slide-content h1 {
         font-size: 2rem;
     }
 
-    .hero p {
+    .hero p, .slide-content p {
         font-size: 1rem;
     }
 
     .cta-buttons {
         flex-direction: column;
+        align-items: center; /* Center buttons vertically */
+        width: 80%;
+        margin: 0 auto; /* Center button container */
     }
 
     .btn {
-        width: 100%;
+        width: 100%; /* Make buttons full width */
         margin-bottom: 1rem;
     }
-}
-@media (max-width: 768px) {
+    .cta-buttons .btn:last-child {
+        margin-bottom: 0;
+    }
+
     .hero-swiper .swiper-button-prev,
     .hero-swiper .swiper-button-next {
-        /* Optionally hide buttons on mobile */
-        /* display: none; */
+        /* display: none; */ /* Optionally hide arrows on mobile */
         --swiper-navigation-size: 25px; /* Smaller arrows */
     }
      .hero-swiper .swiper-button-prev {
@@ -800,8 +872,68 @@ footer {
         height: 8px;
     }
 
-     /* Adjust image height on mobile if needed */
-     .swiper-slide img {
-        max-height: 80vh;
+    /* Project slider on mobile */
+    .project-card {
+        min-width: 80vw; /* Adjust width */
+        width: 80vw;
+    }
+    .project-grid {
+        gap: 1rem;
+        padding-left: 15px; /* Adjust padding */
+        padding-right: 15px;
+        margin-left: -15px; /* Adjust margin */
+        margin-right: -15px;
+        scroll-padding-inline: 15px;
+    }
+    .slider-indicator-container {
+        width: 80%;
+    }
+
+    /* Partners on mobile */
+    .partners-grid {
+        grid-template-columns: repeat(2, 1fr); /* Two columns */
+    }
+
+    /* People on mobile */
+    .people-grid {
+        grid-template-columns: 1fr; /* Single column */
+        padding: 0 1rem; /* Add padding */
+    }
+    .person-card {
+        flex-direction: column; /* Stack image and info */
+        text-align: center;
+        padding: 1.5rem 1rem; /* Adjust padding */
+        gap: 1rem;
+    }
+     .person-card img {
+         width: 100px; /* Larger image on mobile stack */
+         height: 100px;
+         margin-bottom: 0.5rem;
+     }
+}
+
+/* Very Small Screens */
+@media (max-width: 480px) {
+    .header-cta-buttons {
+        /* Optionally hide one button or make smaller */
+        gap: 0.3rem;
+    }
+    .donate-btn {
+        padding: 0.3rem 0.6rem;
+        font-size: 0.8rem;
+    }
+    .project-card {
+        min-width: 90vw;
+        width: 90vw;
+    }
+     .partners-grid {
+        grid-template-columns: 1fr; /* Single column */
+    }
+    .footer-content {
+        grid-template-columns: 1fr; /* Stack footer sections */
+        text-align: center;
+    }
+    .footer-section ul {
+        padding: 0;
     }
 }
