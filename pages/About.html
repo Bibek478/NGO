@@ -9,6 +9,91 @@
     <link rel="icon" type="Image/x-icon" href="../Assets/favicon.ico">
     <link rel="icon" type="image/svg+xml" href="../Assets/favicon.svg"/>
     <link rel="stylesheet" href="../styles.css"> <!-- Adjusted path -->
+    <style>
+        .about-content {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+        
+        .about-section {
+            margin-bottom: 4rem;
+        }
+        
+        .about-section h2 {
+            font-size: 2.5rem;
+            color: #6495ED;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .about-section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: #6495ED;
+            border-radius: 2px;
+        }
+
+        .registration-details {
+            background: #f8f9fa;
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 3rem;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .registration-details ul {
+            list-style: none;
+            padding: 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .registration-details li {
+            padding: 1rem;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            transition: transform 0.3s ease;
+        }
+
+        .registration-details li:hover {
+            transform: translateY(-3px);
+        }
+
+        .values-list {
+            margin-top: 2rem;
+        }
+
+        .value-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid #eee;
+        }
+
+        .value-item:last-child {
+            border-bottom: none;
+        }
+
+        .value-item strong {
+            color: #6495ED;
+            font-size: 1.2rem;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+
+        .value-item p {
+            color: #444;
+            line-height: 1.6;
+            margin: 0;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -39,43 +124,115 @@
 
     <main>
         <!-- Page Title Section -->
-        <section class="page-title" style="background-color: #f4f4f4; padding: 6rem 0 2rem 0; text-align: center; margin-top: 60px;"> <!-- Added margin-top for fixed header -->
+        <section class="page-title" style="background: linear-gradient(135deg, #f4f4f4 0%, #e8f0fe 100%); padding: 8rem 0 4rem 0; text-align: center; margin-top: 60px;">
             <div class="container">
-                <h1>About Our NGO</h1>
-                <p>Learn more about our mission, vision, and the team behind our work.</p>
+                <h1 style="font-size: 3.5rem; margin-bottom: 1rem; color: #333;">About Our NGO</h1>
+                <p style="font-size: 1.2rem; color: #666; max-width: 700px; margin: 0 auto; line-height: 1.6;">Learn more about our mission, vision, and the team behind our work.</p>
             </div>
         </section>
 
         <!-- Our Story Section -->
-        <section class="about-content" style="padding: 4rem 0;">
-            <div class="container">
+        <section class="about-content">
+            <div class="about-section">
                 <h2>Our Story</h2>
-                <p>Phansidewa Social & Rural Welfare Society was founded in October 2014 with a mission to uplift rural communities and ensure access to basic rights and services. Since its inception, the society has been engaged in various NGO-related activities focusing on social welfare, awareness, community development, and environmental sustainability.</p>
-                
-<!--                 <p>From humble beginnings working with a small community in Delhi, we have grown steadily, expanding our reach and impact across various regions in India.</p> -->
+                <p style="font-size: 1.1rem; line-height: 1.8; color: #444;">Phansidewa Social & Rural Welfare Society was founded in October 2014 with a mission to uplift rural communities and ensure access to basic rights and services. Since its inception, the society has been engaged in various NGO-related activities focusing on social welfare, awareness, community development, and environmental sustainability.</p>
+            </div>
 
-                <h2 style="margin-top: 2rem;">Our Mission & Vision</h2>
-                <p><strong>Mission:</strong> To empower rural and underprivileged communities by providing them with access to safe drinking water, improved sanitation, education, and sustainable development solutions.</p>
-                <p><strong>Vision:</strong>To build a society that is self-reliant, aware, inclusive, and sustainable—where basic services are accessible to all, and development is people-centric and environment-friendly.</p>
+            <div class="about-section">
+                <h2>Our Mission & Vision</h2>
+                <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 2rem;"><strong style="color: #6495ED;">Mission:</strong> To empower rural and underprivileged communities by providing them with access to safe drinking water, improved sanitation, education, and sustainable development solutions.</p>
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #444;"><strong style="color: #6495ED;">Vision:</strong> To build a society that is self-reliant, aware, inclusive, and sustainable—where basic services are accessible to all, and development is people-centric and environment-friendly.</p>
+                </div>
+            </div>
 
-                <h2 style="margin-top: 2rem;">Our Values</h2>
-                <ul>
-                    <li><strong>Transparency</strong> in governance and execution.</li>
-                    <li><strong>Community Participation</strong> for inclusive development</li>
-                    <li><strong>Equality & Inclusiveness</strong> in service delivery </li>
-                    <li><strong>Sustainability</strong> through environment-conscious approaches</li>
-                    <li><strong>Accountability & Dedication</strong> in all areas of work</li>
-                </ul>
-                <p style="margin-top: 2rem;">Phansidewa Social & Rural Welfare Society continues its journey with a clear purpose—to serve the community with compassion, innovation, and integrity while aligning with national development goals</p>
+            <div class="about-section">
+                <h2>Our Values</h2>
+                <div class="values-list">
+                    <div class="value-item">
+                        <strong>Transparency</strong>
+                        <p>We maintain complete transparency in our governance and execution of all activities.</p>
+                    </div>
+                    <div class="value-item">
+                        <strong>Community Participation</strong>
+                        <p>We believe in inclusive development through active community involvement and participation.</p>
+                    </div>
+                    <div class="value-item">
+                        <strong>Equality & Inclusiveness</strong>
+                        <p>We ensure equal access and fair treatment in all our service delivery programs.</p>
+                    </div>
+                    <div class="value-item">
+                        <strong>Sustainability</strong>
+                        <p>We implement environment-conscious approaches in all our development initiatives.</p>
+                    </div>
+                    <div class="value-item">
+                        <strong>Accountability & Dedication</strong>
+                        <p>We maintain the highest standards of accountability and dedication in all areas of our work.</p>
+                    </div>
+                </div>
                 
-                <ul style="margin-top: 2rem;">
-                    <li><strong>Registration No.:</strong> S/2L/No. 29798</li>
-                        <li><strong>PAN No.:</strong> AADAP3841Q</li>
-                        <li><strong>12A Unique Registration No.:</strong> AADAP3841QE20241 </li>
-                        <li><strong>80G Unique Registration No.:</strong> AADAP3841QF20251 </li>
-                        <!-- <li><strong>Accountability & Dedication</strong> in all areas of work</li> -->
+                <p style="margin-top: 3rem; font-size: 1.1rem; line-height: 1.8; color: #444; text-align: center;">Phansidewa Social & Rural Welfare Society continues its journey with a clear purpose—to serve the community with compassion, innovation, and integrity while aligning with national development goals</p>
+            </div>
+
+            <!-- New Sections -->
+            <div class="about-section">
+                <h2>Government Partnerships</h2>
+                <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #444; margin-bottom: 1.5rem;">
+                        We actively collaborate with government initiatives to create sustainable impact at scale:
+                    </p>
+                    <div class="initiative-list" style="display: grid; gap: 1.5rem;">
+                        <div class="initiative-item">
+                            <strong style="color: #6495ED; font-size: 1.2rem;">Jal Jeevan Mission (ISA)</strong>
+                            <p style="color: #444; margin-top: 0.5rem;">Providing implementation support through community mobilization, village planning, IEC activities, and monitoring of safe water supply.</p>
+                        </div>
+                        <div class="initiative-item">
+                            <strong style="color: #6495ED; font-size: 1.2rem;">Swachh Bharat Mission</strong>
+                            <p style="color: #444; margin-top: 0.5rem;">Promoting hygiene, toilet usage, and cleanliness practices in rural households.</p>
+                        </div>
+                        <div class="initiative-item">
+                            <strong style="color: #6495ED; font-size: 1.2rem;">Solid Waste Management</strong>
+                            <p style="color: #444; margin-top: 0.5rem;">Leading awareness and execution of waste segregation and eco-friendly waste management practices.</p>
+                        </div>
+                        <div class="initiative-item">
+                            <strong style="color: #6495ED; font-size: 1.2rem;">Water Quality Monitoring</strong>
+                            <p style="color: #444; margin-top: 0.5rem;">Supporting Siliguri Water Supply Division in water sample collection, quality surveillance, and reporting.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="about-section">
+                <h2>Community Impact</h2>
+                <div style="background: white; padding: 2rem; border-radius: 12px; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);">
+                    <p style="font-size: 1.1rem; line-height: 1.8; color: #444;">
+                        Through regular interaction and trust-building, we've learned that lasting change comes from understanding local beliefs, behaviors, and habits. Our consistent awareness programs, field visits, and capacity building initiatives have successfully contributed to shifting community mindsets towards:
+                    </p>
+                    <ul style="list-style: none; padding: 0; margin-top: 1.5rem;">
+                        <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #6495ED;">•</span>
+                            <strong style="color: #6495ED;">Improved Sanitation Practices</strong>
+                        </li>
+                        <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #6495ED;">•</span>
+                            <strong style="color: #6495ED;">Water Conservation</strong>
+                        </li>
+                        <li style="margin-bottom: 1rem; padding-left: 1.5rem; position: relative;">
+                            <span style="position: absolute; left: 0; color: #6495ED;">•</span>
+                            <strong style="color: #6495ED;">Health-Focused Living</strong>
+                        </li>
                     </ul>
                 </div>
+            </div>
+
+            <div class="registration-details">
+                <ul>
+                    <li><strong style="color: #6495ED;">Registration No.:</strong><br>S/2L/No. 29798</li>
+                    <li><strong style="color: #6495ED;">PAN No.:</strong><br>AADAP3841Q</li>
+                    <li><strong style="color: #6495ED;">12A Unique Registration No.:</strong><br>AADAP3841QE20241</li>
+                    <li><strong style="color: #6495ED;">80G Unique Registration No.:</strong><br>AADAP3841QF20251</li>
+                </ul>
+            </div>
         </section>
     </main>
 
