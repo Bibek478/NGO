@@ -2,10 +2,22 @@ document.addEventListener('DOMContentLoaded', function() {
     // Hamburger menu toggle
     const hamburger = document.querySelector('.hamburger');
     const nav = document.querySelector('nav');
+    const body = document.body;
 
     hamburger.addEventListener('click', function() {
         nav.classList.toggle('active');
         this.classList.toggle('active');
+        // Prevent background scrolling when menu is open
+        body.style.overflow = nav.classList.contains('active') ? 'hidden' : '';
+    });
+
+    // Close menu when clicking a link
+    nav.querySelectorAll('a').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+            hamburger.classList.remove('active');
+            body.style.overflow = '';
+        });
     });
 
     // Close menu when clicking outside
@@ -13,6 +25,7 @@ document.addEventListener('DOMContentLoaded', function() {
         if (!hamburger.contains(e.target) && !nav.contains(e.target)) {
             nav.classList.remove('active');
             hamburger.classList.remove('active');
+            body.style.overflow = '';
         }
     });
 
@@ -28,16 +41,9 @@ document.addEventListener('DOMContentLoaded', function() {
             // Close mobile menu after clicking a link
             nav.classList.remove('active');
             hamburger.classList.remove('active');
+            body.style.overflow = '';
         });
     });
-
-    // Donation button click event
-    // const donateBtn = document.querySelector('.donate-btn');
-    // if (donateBtn) {
-    //     donateBtn.addEventListener('click', function() {
-    //         alert('Thank you for your interest in donating. This feature is coming soon!');
-    //     });
-    // }
 
     const heroSwiper = new Swiper('.hero-swiper', {
         direction: 'horizontal',
