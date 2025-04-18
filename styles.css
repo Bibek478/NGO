@@ -657,6 +657,29 @@ nav ul li a.active {
     .article-content h3 {
         font-size: 1.3rem;
     }
+
+    /* Project grid on mobile - replace horizontal scroll with vertical stack */
+    .project-grid {
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem;
+        overflow-x: visible;
+        padding: 0 15px;
+        margin: 0;
+        scroll-snap-type: none;
+        cursor: default;
+    }
+
+    .project-card {
+        min-width: 100%;
+        width: 100%;
+        margin: 0;
+    }
+
+    /* Hide slider indicator on mobile since we're stacking */
+    .slider-indicator-container {
+        display: none;
+    }
 }
 
 /* Partners section styles */
@@ -1077,6 +1100,27 @@ footer .container {
          height: 100px;
          margin-bottom: 0.5rem;
      }
+
+    /* Update footer responsive styles */
+    .footer-content {
+        grid-template-columns: repeat(3, 1fr); /* Keep 3 columns */
+        gap: 1rem; /* Reduce gap for small screens */
+        font-size: 0.9rem; /* Slightly smaller font */
+    }
+
+    .footer-section h3 {
+        font-size: 1rem; /* Smaller heading */
+        margin-bottom: 0.75rem;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.5rem; /* Reduce spacing between items */
+    }
+
+    .footer-section p {
+        font-size: 0.9rem;
+        margin-bottom: 0.4rem;
+    }
 }
 
 /* Very Small Screens */
@@ -1097,10 +1141,26 @@ footer .container {
         grid-template-columns: 1fr; /* Single column */
     }
     .footer-content {
-        grid-template-columns: 1fr; /* Stack footer sections */
-        text-align: center;
+        grid-template-columns: repeat(3, 1fr); /* Maintain 3 columns */
+        gap: 0.5rem; /* Even smaller gap */
+        font-size: 0.8rem; /* Even smaller font */
     }
-    .footer-section ul {
-        padding: 0;
+
+    .footer-section {
+        padding: 0 5px; /* Add small padding */
+    }
+
+    .footer-section h3 {
+        font-size: 0.9rem;
+        margin-bottom: 0.5rem;
+    }
+
+    .footer-section ul li {
+        margin-bottom: 0.4rem;
+    }
+
+    .footer-section p {
+        font-size: 0.8rem;
+        margin-bottom: 0.3rem;
     }
 }
