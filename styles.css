@@ -404,18 +404,17 @@ nav ul li a.active {
     display: flex;
     gap: 1.5rem; /* Consistent gap */
     overflow-x: auto; /* Changed from scroll to auto */
-    /* padding: 1rem 0; */ /* Padding might interfere with scroll */
     padding-bottom: 1rem; /* Add padding only at bottom */
     margin-bottom: 1.5rem;
     scroll-snap-type: x mandatory;
     -webkit-overflow-scrolling: touch;
     cursor: grab;
-    /* Add padding left/right to show edges */
-    padding-left: 20px;
-    padding-right: 20px;
-    /* Adjust margin to counter container padding if grid is full width */
-    margin-left: -20px;
-    margin-right: -20px;
+    padding-left: max(20px, calc((100% - 1200px) / 2));
+    padding-right: max(20px, calc((100% - 1200px) / 2));
+    /* Remove the negative margins */
+    margin-left: 0;
+    margin-right: 0;
+    justify-content: center; /* Center the cards */
 }
 
 .project-grid:active {
@@ -679,20 +678,17 @@ nav ul li a.active {
 
     /* Project grid on mobile - replace horizontal scroll with vertical stack */
     .project-grid {
-        display: flex;
-        flex-direction: column;
-        gap: 1.5rem;
-        overflow-x: visible;
-        padding: 0 15px;
+        padding-left: 15px;
+        padding-right: 15px;
         margin: 0;
-        scroll-snap-type: none;
-        cursor: default;
+        justify-content: flex-start; /* Reset to flex-start on mobile */
+        gap: 1rem;
     }
 
     .project-card {
-        min-width: 100%;
-        width: 100%;
-        margin: 0;
+        min-width: calc(100% - 30px); /* Account for padding */
+        width: calc(100% - 30px);
+        margin: 0 auto; /* Center cards */
     }
 
     /* Hide slider indicator on mobile since we're stacking */
@@ -731,6 +727,26 @@ nav ul li a.active {
         opacity: 1;
         transform: translateX(0);
         transition-delay: 0.2s;
+    }
+
+    /* Adjust hero height for mobile */
+    .hero {
+        height: 65vh; /* Increased from 60vh */
+        min-height: 450px; /* Increased from 400px */
+    }
+
+    .slide-content {
+        padding: 15px; /* Reduce padding */
+    }
+
+    .logo img {
+        position: static;
+        transform: none;
+        height: 85px; /* Increased from 75px */
+        vertical-align: middle;
+        margin-left: 15px;
+        /* Add padding to align with hamburger */
+        padding: 5px 0;
     }
 }
 
@@ -986,11 +1002,13 @@ footer .container {
     }
 
     .logo img {
-        position: static; /* Revert image positioning */
-        transform: none; /* Remove transform */
-        height: 50px; /* <<< Set appropriate logo height for mobile header */
-        vertical-align: middle; /* Re-align vertically */
-        margin-left: 15px; /* Space from hamburger */
+        position: static;
+        transform: none;
+        height: 85px; /* Increased from 75px */
+        vertical-align: middle;
+        margin-left: 15px;
+        /* Add padding to align with hamburger */
+        padding: 5px 0;
     }
 
     .hamburger {
@@ -1075,6 +1093,11 @@ footer .container {
         margin-top: 65px; /* Match mobile header height */
     }
 
+    .hero {
+        height: 65vh; /* Increased from 60vh */
+        min-height: 450px; /* Increased from 400px */
+    }
+
     .hero h1, .slide-content h1 {
         font-size: 2rem;
     }
@@ -1119,16 +1142,16 @@ footer .container {
 
     /* Project slider on mobile */
     .project-card {
-        min-width: 80vw; /* Adjust width */
-        width: 80vw;
+        min-width: calc(100% - 30px); /* Account for padding */
+        width: calc(100% - 30px);
+        margin: 0 auto; /* Center cards */
     }
     .project-grid {
-        gap: 1rem;
         padding-left: 15px; /* Adjust padding */
         padding-right: 15px;
-        margin-left: -15px; /* Adjust margin */
-        margin-right: -15px;
-        scroll-padding-inline: 15px;
+        margin: 0;
+        justify-content: flex-start; /* Reset to flex-start on mobile */
+        gap: 1rem;
     }
     .slider-indicator-container {
         width: 80%;
@@ -1217,5 +1240,16 @@ footer .container {
     .footer-section p {
         font-size: 0.8rem;
         margin-bottom: 0.3rem;
+    }
+
+    /* Further reduce hero height for very small screens */
+    .hero {
+        height: 55vh; /* Increased from 50vh */
+        min-height: 400px; /* Increased from 350px */
+    }
+
+    .logo img {
+        height: 80px; /* Increased from 70px */
+        padding: 5px 0;
     }
 }

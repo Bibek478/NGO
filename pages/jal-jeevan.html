@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jal Jeevan Mission - PSRWS</title>
+    <link rel="icon" type="Image/x-icon" href="../Assets/favicon.ico">
+    <link rel="icon" type="image/svg+xml" href="../Assets/favicon.svg"/>
+    <link rel="stylesheet" href="../styles.css">
+    <style>
+        .project-hero {
+            position: relative;
+            height: 60vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../Assets/water.jpg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+            margin-bottom: 2rem;
+        }
+
+        .project-hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .project-hero .subtitle {
+            font-size: 1.5rem;
+            animation: fadeInUp 1s ease-out 0.3s;
+            opacity: 0;
+            animation-fill-mode: forwards;
+        }
+
+        .project-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            margin-top: 2rem;
+        }
+
+        .main-image {
+            width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .main-image:hover {
+            transform: scale(1.02);
+        }
+
+        .project-description {
+            padding: 2rem;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+        }
+
+        .impact-stats {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+
+        .stat-box {
+            background: #f8f9fa;
+            padding: 1.5rem;
+            border-radius: 8px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .stat-box:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .gallery-grid img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-grid img:hover {
+            transform: scale(1.05);
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .project-hero h1 {
+                font-size: 2rem;
+            }
+            
+            .impact-stats {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="n">
+                <a href="../index.html" class="logo">
+                    <img src="../Assets/NGO-logo.svg" alt="PSRWS Logo">
+                </a>
+            </div>
+            <button class="hamburger" aria-label="Toggle menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav>
+                <ul>
+                    <li><a href="../index.html">Home</a></li>
+                    <li><a href="About.html">About</a></li>
+                    <li><a href="Projects.html" class="active">Projects</a></li>
+                    <li><a href="News.html">News & Publication</a></li>
+                    <li><a href="Contact.html">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="header-cta-buttons">
+                <a href="join.html"><button class="donate-btn">Join us</button></a>
+                <a href="Donate.html"><button class="donate-btn">Donate Now</button></a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="project-hero">
+            <div class="hero-content">
+                <h1>Jal Jeevan Mission (ISA)</h1>
+                <p class="subtitle">Implementation Support Agency for Water Supply and Sanitation</p>
+            </div>
+        </section>
+
+        <section class="project-content">
+            <div class="project-grid">
+                <div class="image-section">
+                    <img src="../Assets/jjm.webp" alt="Jal Jeevan Mission" class="main-image">
+                </div>
+                
+                <div class="project-description">
+                    <h2>About the Project</h2>
+                    <p>Jal Jeevan Mission is a flagship programme of the Government of India which aims to provide safe and adequate drinking water through individual household tap connections to all households in rural India by 2024.</p>
+                    
+                    <h3>Our Role</h3>
+                    <p>As an Implementation Support Agency (ISA), PSRWS is responsible for:</p>
+                    <ul>
+                        <li>Community mobilization and awareness generation</li>
+                        <li>Capacity building of Gram Panchayat and VWSC</li>
+                        <li>Support in planning and implementation</li>
+                        <li>Technical assistance and monitoring</li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="impact-section">
+                <h2>Project Impact</h2>
+                <div class="impact-stats">
+                    <div class="stat-box">
+                        <h4>1000+</h4>
+                        <p>Households Connected</p>
+                    </div>
+                    <div class="stat-box">
+                        <h4>20+</h4>
+                        <p>Villages Covered</p>
+                    </div>
+                    <div class="stat-box">
+                        <h4>5000+</h4>
+                        <p>People Benefited</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="gallery-section">
+                <h2>Project Gallery</h2>
+                <div class="gallery-grid">
+                    <img src="../Assets/water.jpg" alt="Water Project Image 1">
+                    <img src="../Assets/water2.jpg" alt="Water Project Image 2">
+                    <img src="../Assets/nirmal.jpg" alt="Water Project Image 3">
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="../index.html">Home</a></li>
+                        <li><a href="About.html">About</a></li>
+                        <li><a href="Projects.html">Projects</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Get Involved</h3>
+                    <ul>
+                        <li><a href="join.html">Join Us</a></li>
+                        <li><a href="Donate.html">Donate</a></li>
+                        <li><a href="Contact.html">Contact Us</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Contact</h3>
+                    <p>Phansidewa, Darjeeling, West Bengal, India</p>
+                    <p>Phone: +91 99322 38011</p>
+                    <p>Email: psrwsphd@gmail.com</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; PSRWS. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="../script.js"></script>
+</body>
+</html>
