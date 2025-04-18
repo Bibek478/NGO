@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', function() {
             enabled: true,
             onlyInViewport: false,
         },
-        speed: 1000,
+        speed: 2000,
     });
 
     // Project slider functionality
